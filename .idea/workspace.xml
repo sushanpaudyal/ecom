@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f192b34-9605-4b6b-8341-121afe18486a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
       <change beforePath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" afterPath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/settings.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/settings.blade.php" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,90 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/settings.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="27" column="63" lean-forward="true" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+            <state relative-caret-position="199">
+              <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="26" selection-end-column="46" />
               <folding>
-                <marker date="1563791836831" expanded="true" signature="9:43" ph="..." />
-                <marker date="1563791836831" expanded="true" signature="55:64" ph="..." />
+                <marker date="1563793308856" expanded="true" signature="9:43" ph="..." />
+                <marker date="1563793308856" expanded="true" signature="55:64" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="matrix.form_validation.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="79" column="30" lean-forward="false" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_header.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-              <folding>
-                <marker date="1563790701968" expanded="true" signature="1885:1908" ph="..." />
-                <marker date="1563790701968" expanded="true" signature="2027:2048" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_design.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <marker date="1563790670600" expanded="true" signature="213:255" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="297:350" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="392:433" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="475:516" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="558:599" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="624:673" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="732:775" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="919:953" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="965:1000" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1010:1019" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1051:1085" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1131:1167" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1196:1238" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1267:1306" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1335:1375" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1404:1441" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1470:1511" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1540:1572" ph="..." />
-                <marker date="1563790670600" expanded="true" signature="1601:1649" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -131,11 +54,11 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/admin_login.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/settings.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" />
       </list>
     </option>
@@ -329,7 +252,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="matrix.form&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/public/js/backend_js/matrix.form_validation.js&#10;admin_hea&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/resources/views/layouts/adminLayout/admin_header.blade.php&#10;Admin&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/app/Http/Controllers/AdminController.php&#10;Redirec&#9;null&#9;null&#10;web.&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/routes/web.php&#10;AdminC&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/app/Http/Controllers/AdminController.php" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/public/js/backend_js/matrix.form_validation.js&#10;sett&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/resources/views/admin/settings.blade.php&#10;AdminCo&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/app/Http/Controllers/AdminController.php&#10;web&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/routes/web.php&#10;matrix.form&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/public/js/backend_js/matrix.form_validation.js&#10;admin_hea&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/resources/views/layouts/adminLayout/admin_header.blade.php&#10;Admin&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/app/Http/Controllers/AdminController.php&#10;Redirec&#9;null&#9;null&#10;web.&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/routes/web.php&#10;AdminC&#9;FILE&#9;file:///Applications/MAMP/htdocs/Study/ecommerce/app/Http/Controllers/AdminController.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -366,16 +289,15 @@
       <updated>1561481304304</updated>
       <workItem from="1561481305412" duration="1254000" />
       <workItem from="1561543353245" duration="3912000" />
-      <workItem from="1563789326204" duration="1723000" />
+      <workItem from="1563789326204" duration="3479000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6889000" />
+    <option name="totallyTimeSpent" value="8645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2553648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -386,7 +308,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -435,7 +357,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#54#82#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -486,7 +408,7 @@
         <state relative-caret-position="136">
           <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="10" selection-end-column="5" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#54#82#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -611,24 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_footer.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -637,9 +541,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+          <folding>
+            <marker date="1563790701968" expanded="true" signature="1885:1908" ph="..." />
+            <marker date="1563790701968" expanded="true" signature="2027:2048" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="12">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <marker date="1563790670600" expanded="true" signature="213:255" ph="..." />
@@ -665,33 +580,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_header.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+        <state relative-caret-position="221">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="21" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="41" selection-end-column="5" />
           <folding>
-            <marker date="1563790701968" expanded="true" signature="1885:1908" ph="..." />
-            <marker date="1563790701968" expanded="true" signature="2027:2048" ph="..." />
+            <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/settings.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="27" column="63" lean-forward="true" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+        <state relative-caret-position="199">
+          <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="26" selection-end-column="46" />
           <folding>
-            <marker date="1563791836831" expanded="true" signature="9:43" ph="..." />
-            <marker date="1563791836831" expanded="true" signature="55:64" ph="..." />
+            <marker date="1563793308856" expanded="true" signature="9:43" ph="..." />
+            <marker date="1563793308856" expanded="true" signature="55:64" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="79" column="30" lean-forward="false" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
