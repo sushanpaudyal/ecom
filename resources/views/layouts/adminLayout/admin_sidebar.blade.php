@@ -2,11 +2,10 @@
     <ul>
         <li class="active"><a href="{{route('admin.dashboard')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">3</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Categories</span> </a>
             <ul>
-                <li><a href="form-common.html">Basic Form</a></li>
-                <li><a href="form-validation.html">Form with Validation</a></li>
-                <li><a href="form-wizard.html">Form with Wizard</a></li>
+                <li><a href="{{route('addCategory')}}">Add Category</a></li>
+                <li><a href="{{route('viewCategories')}}">View Category</a></li>
             </ul>
         </li>
 
