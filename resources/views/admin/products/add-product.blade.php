@@ -28,7 +28,7 @@
 
                         </div>
                         <div class="widget-content nopadding">
-                            <form class="form-horizontal" method="post" action="{{route('addProduct')}}" name="add_product" id="add_product" novalidate="novalidate">
+                            <form class="form-horizontal" method="post" action="{{route('addProduct')}}" name="add_product" id="add_product" novalidate="novalidate" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="control-group">
