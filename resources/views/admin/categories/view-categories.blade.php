@@ -47,7 +47,7 @@
                                   <td>{{$category->url}}</td>
                                   <td class="center">
                                       <a href="{{route('editCategory', $category->id)}}" class="btn btn-primary btn-mini">Edit</a>
-                                      <a href="#" class="btn btn-danger btn-mini">Delete</a>
+                                      <a id="delCat" href="{{route('deleteCategory', $category->id)}}" class="btn btn-danger btn-mini delCat">Delete</a>
 
                                   </td>
                               </tr>

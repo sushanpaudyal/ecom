@@ -135,4 +135,12 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	$(".delCat").click(function () {
+		if(confirm('Are You Sure You want to delete this category?')){
+			return true;
+		}
+		return false;
+    });
+
 });
