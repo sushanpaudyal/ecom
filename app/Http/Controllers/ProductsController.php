@@ -36,9 +36,9 @@ class ProductsController extends Controller
                     // Resize image code
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111,99999).'.'.$extension;
-                    $large_image_path = 'images/backend_images/products/large'. $filename;
-                    $medium_image_path = 'images/backend_images/products/medium'. $filename;
-                    $small_image_path = 'images/backend_images/products/small'. $filename;
+                    $large_image_path = 'images/backend_images/products/large/'. $filename;
+                    $medium_image_path = 'images/backend_images/products/medium/'. $filename;
+                    $small_image_path = 'images/backend_images/products/small/'. $filename;
                     //Resize Images
                     Image::make($image_tmp)->save($large_image_path);
                     Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
@@ -50,7 +50,7 @@ class ProductsController extends Controller
             }
 
             $product->save();
-            return redirect()->back()->with('flash_message_success', 'Product Created Successfully');
+            return redirect()->route('viewProducts')->with('flash_message_success', 'Product Created Successfully');
         }
 
         $categories = Category::where(['parent_id' => 0])->get();
@@ -64,4 +64,14 @@ class ProductsController extends Controller
         }
         return view ('admin.products.add-product', compact('categories_dropdown'));
     }
+
+    public function viewProducts(){
+        $products = Product::get();
+        foreach($products as $key => $val){
+          $category_name = Category::where(['id' => $val->category_id])->first();
+          $products[$key]->category_name = $category_name->name;
+        }
+        return view ('admin.products.view_products', compact('products'));
+    }
 }
+

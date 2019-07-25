@@ -12,7 +12,7 @@
         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Products</span> </a>
             <ul>
                 <li><a href="{{route('addProduct')}}">Add Product</a></li>
-                <li><a href="{{route('viewCategories')}}">View Products</a></li>
+                <li><a href="{{route('viewProducts')}}">View Products</a></li>
             </ul>
         </li>
 
