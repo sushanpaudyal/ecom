@@ -56,12 +56,31 @@
                                         <td>{{$product->product_color}}</td>
                                         <td>{{$product->price}}</td>
                                         <td class="center">
+                                            <a class="btn btn-success btn-mini" href="#myModal{{$product->id}}" data-toggle="modal">View</a>
                                             <a href="" class="btn btn-primary btn-mini">Edit</a>
                                             <a id="delCat" href="" class="btn btn-danger btn-mini delCat">Delete</a>
-
                                         </td>
                                     </tr>
+
+
+                                    <div id="myModal{{$product->id}}" class="modal hide">
+                                        <div class="modal-header">
+                                            <button data-dismiss="modal" class="close" type="button">×</button>
+                                            <h3>{{$product->product_name}} Details</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Product ID : {{$product->id}}</p>
+                                            <p>Product Name : {{$product->product_name}}</p>
+                                            <p>Product Code : {{$product->product_code}}</p>
+                                            <p>Product Price : {{$product->price}}</p>
+                                            <p>Product Description : {{$product->description}}</p>
+
+
+                                        </div>
+                                    </div>
                                     @endforeach
+
+
                                 </tbody>
                             </table>
                         </div>
