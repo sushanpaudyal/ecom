@@ -47,7 +47,7 @@
                                   <td>{{$category->url}}</td>
                                   <td class="center">
                                       <a href="{{route('editCategory', $category->id)}}" class="btn btn-primary btn-mini">Edit</a>
-                                      <a id="delCat" href="{{route('deleteCategory', $category->id)}}" class="btn btn-danger btn-mini delCat">Delete</a>
+                                      <a rel="{{$category->id}}" rel1="delete-category" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
 
                                   </td>
                               </tr>
