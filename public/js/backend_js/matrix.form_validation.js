@@ -212,4 +212,23 @@ $(document).ready(function(){
 		return false;
     });
 
+    $(".deleteRecord").click(function(){
+        var id = $(this).attr('rel');
+        var deleteFunction = $(this).attr('rel1');
+        // alert(deleteFunction);
+        swal({
+                title: "Are You Sure? ",
+                text: "You will not be able to recover this record again",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Delete it!"
+            },
+            function(){
+                window.location.href="/admin/"+deleteFunction+"/"+id;
+            });
+
+    });
+
+
 });

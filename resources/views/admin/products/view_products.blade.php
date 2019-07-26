@@ -58,7 +58,7 @@
                                         <td class="center">
                                             <a class="btn btn-success btn-mini" href="#myModal{{$product->id}}" data-toggle="modal">View</a>
                                             <a href="{{route('editProduct', $product->id)}}" class="btn btn-primary btn-mini">Edit</a>
-                                            <a id="delCat" href="" class="btn btn-danger btn-mini delCat">Delete</a>
+                                            <a rel="{{$product->id}}" rel1="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
                                         </td>
                                     </tr>
 
