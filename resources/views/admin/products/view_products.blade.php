@@ -57,7 +57,7 @@
                                         <td>{{$product->price}}</td>
                                         <td class="center">
                                             <a class="btn btn-success btn-mini" href="#myModal{{$product->id}}" data-toggle="modal">View</a>
-                                            <a href="" class="btn btn-primary btn-mini">Edit</a>
+                                            <a href="{{route('editProduct', $product->id)}}" class="btn btn-primary btn-mini">Edit</a>
                                             <a id="delCat" href="" class="btn btn-danger btn-mini delCat">Delete</a>
                                         </td>
                                     </tr>
