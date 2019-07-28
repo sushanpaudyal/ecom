@@ -139,7 +139,8 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');
     }
     public function addAttributes(Request $request, $id){
-        return view ('admin.products.add_attributes');
+        $productDetails = Product::where(['id' => $id])->first();
+        return view ('admin.products.add_attributes', compact('productDetails'));
     }
 }
 
