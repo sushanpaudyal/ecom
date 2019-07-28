@@ -140,7 +140,7 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');
     }
     public function addAttributes(Request $request, $id){
-        $productDetails = Product::where(['id' => $id])->first();
+        $productDetails = Product::with('attributes')->where(['id' => $id])->first();
         if($request->isMethod('post')){
             $data = $request->all();
             foreach($data['sku'] as $key => $val){
