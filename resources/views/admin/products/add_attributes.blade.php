@@ -30,6 +30,7 @@
                         <div class="widget-content nopadding">
                             <form class="form-horizontal" method="post" action="{{route('addAttributes', $productDetails->id)}}" name="add_attribute" id="add_attribute" novalidate="novalidate" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="product_id" value="{{$productDetails->id}}">
                                 <div class="control-group">
                                     <label class="control-label">Product Name</label>
                                     <label class="control-label"><strong>{{$productDetails->product_name}}</strong></label>
@@ -62,7 +63,7 @@
 
 
                                 <div class="form-actions">
-                                    <input type="submit" value="Add Product" class="btn btn-success">
+                                    <input type="submit" value="Add Product Attribute" class="btn btn-success">
                                 </div>
                             </form>
 

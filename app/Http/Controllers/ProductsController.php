@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ProductsAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;
@@ -140,6 +141,21 @@ class ProductsController extends Controller
     }
     public function addAttributes(Request $request, $id){
         $productDetails = Product::where(['id' => $id])->first();
+        if($request->isMethod('post')){
+            $data = $request->all();
+            foreach($data['sku'] as $key => $val){
+                if(!empty($val)){
+                    $attribute = new ProductsAttribute;
+                    $attribute->product_id = $id;
+                    $attribute->sku = $val;
+                    $attribute->size = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->save();
+                }
+            }
+            return redirect()->back()->with('flash_message_success', 'Attribute added successfully');
+        }
         return view ('admin.products.add_attributes', compact('productDetails'));
     }
 }
