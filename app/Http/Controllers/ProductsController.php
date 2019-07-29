@@ -166,26 +166,25 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Attribute Delete successfully');
     }
 
-    public function products($url = null){
+
+    public function products($url = null)
+    {
+        // Getting all categories and sub categories 
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         $categoryDetails = Category::where(['url' => $url])->first();
-
-        if($categoryDetails->parent_id == 0){
-            // url is main category
+        if ($categoryDetails->parent_id == 0) {
+            // if url is main category 
             $subCategories = Category::where(['parent_id' => $categoryDetails->id])->get();
-            $cat_ids = "";
-            foreach($subCategories as $key => $subcat)
-            {
-                if($key == 1) $cat_ids .= ",";
-                $cat_ids .= trim($subcat->id);
+            foreach ($subCategories as $subcat) {
+                $cat_ids[] = $subcat->id;
             }
-            $productsAll = Product::where(['category_id' => array($cat_ids)])->get();
+            $productsAll = Product::whereIn('category_id', $cat_ids)->get();
+            $productsAll = json_decode(json_encode($productsAll));
         } else {
-            // url is sub category
+            // if url is subcategory url 
             $productsAll = Product::where(['category_id' => $categoryDetails->id])->get();
         }
-
-        return view ('products.listing', compact('categories', 'categoryDetails', 'productsAll'));
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories'));
     }
 
 }
