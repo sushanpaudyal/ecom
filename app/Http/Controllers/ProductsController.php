@@ -169,7 +169,22 @@ class ProductsController extends Controller
     public function products($url = null){
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         $categoryDetails = Category::where(['url' => $url])->first();
-        $productsAll = Product::where(['category_id' => $categoryDetails->id])->get();
+
+        if($categoryDetails->parent_id == 0){
+            // url is main category
+            $subCategories = Category::where(['parent_id' => $categoryDetails->id])->get();
+            $cat_ids = "";
+            foreach($subCategories as $key => $subcat)
+            {
+                if($key == 1) $cat_ids .= ",";
+                $cat_ids .= trim($subcat->id);
+            }
+            $productsAll = Product::where(['category_id' => array($cat_ids)])->get();
+        } else {
+            // url is sub category
+            $productsAll = Product::where(['category_id' => $categoryDetails->id])->get();
+        }
+
         return view ('products.listing', compact('categories', 'categoryDetails', 'productsAll'));
     }
 
