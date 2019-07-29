@@ -12,7 +12,7 @@
 */
 
 // Home Page
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('indexpage');
 
 // Category Listing Page
 Route::get('/products/{url}', 'ProductsController@products')->name('products');
