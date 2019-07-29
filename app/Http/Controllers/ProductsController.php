@@ -139,6 +139,7 @@ class ProductsController extends Controller
         Product::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');
     }
+
     public function addAttributes(Request $request, $id){
         $productDetails = Product::with('attributes')->where(['id' => $id])->first();
         if($request->isMethod('post')){
@@ -164,5 +165,13 @@ class ProductsController extends Controller
         ProductsAttribute::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Attribute Delete successfully');
     }
+
+    public function products($url = null){
+        $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+        $categoryDetails = Category::where(['url' => $url])->first();
+        $productsAll = Product::where(['category_id' => $categoryDetails->id])->get();
+        return view ('products.listing', compact('categories', 'categoryDetails', 'productsAll'));
+    }
+
 }
 

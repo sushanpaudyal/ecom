@@ -11,7 +11,11 @@
 |
 */
 
+// Home Page
 Route::get('/', 'IndexController@index');
+
+// Category Listing Page
+Route::get('/products/{url}', 'ProductsController@products')->name('products');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
