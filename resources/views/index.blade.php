@@ -75,6 +75,7 @@
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                             <div class="panel panel-default">
                                 @foreach($categories as $cat)
+                                    @if($cat->status == 1)
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#{{$cat->id}}" href="#{{$cat->id}}">
@@ -92,6 +93,7 @@
                                         </ul>
                                     </div>
                                 </div>
+                                    @endif
                                     @endforeach
                             </div>
 
