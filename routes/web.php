@@ -20,6 +20,8 @@ Route::get('/products/{url}', 'ProductsController@products')->name('products');
 // Products Details Page
 Route::get('/product/{id}', 'ProductsController@product')->name('product');
 
+Route::post('/product/get-product-price', 'ProductsController@getProductPrice');
+
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
