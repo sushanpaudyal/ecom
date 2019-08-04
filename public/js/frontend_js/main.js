@@ -55,4 +55,13 @@ $(document).ready(function () {
     });
 });
 
+// Replace Image with alternate image
+$(document).ready(function(){
+
+    $(".changeImage").click(function () {
+        var image = $(this).attr('src');
+        $(".mainImage").attr("src", image);
+    });
+});
+
 

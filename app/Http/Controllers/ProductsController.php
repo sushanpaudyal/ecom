@@ -236,7 +236,8 @@ class ProductsController extends Controller
     public function product($id){
         $productDetails = Product::with('attributes')->where('id', $id)->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
-        return view ('products.details', compact('productDetails', 'categories'));
+        $productAltImages = ProductsImage::where(['product_id' => $id])->get();
+        return view ('products.details', compact('productDetails', 'categories', 'productAltImages'));
     }
 
     public function getProductPrice(Request $request){
