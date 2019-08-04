@@ -47,7 +47,18 @@ $(document).ready(function () {
             success:function(resp) {
                 var arr = resp.split('#');
                 $("#getPrice").html("Rs. "+ arr[0]);
+                $("#price").val(arr[0]);
 
+                //Send the updated price based on size of the product
+                if (arr[1] == 0){
+                    $("#cartButton").hide();
+                    $("#availability").text(" Out of Stock").css('color', 'red');
+                    $("#emptySize").text('The product is out of stock').css('color', 'red');
+                }else {
+                    $("#cartButton").show();
+                    $("#availability").text(" In Stock").css('color', 'green');
+                    $("#emptySize").text('').css('color', 'red');
+                }
             },error:function (resp) {
 
             }

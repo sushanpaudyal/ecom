@@ -249,7 +249,8 @@ class ProductsController extends Controller
         $productDetails = Product::with('attributes')->where('id', $id)->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         $productAltImages = ProductsImage::where(['product_id' => $id])->get();
-        return view ('products.details', compact('productDetails', 'categories', 'productAltImages'));
+        $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
+        return view ('products.details', compact('productDetails', 'categories', 'productAltImages', 'total_stock'));
     }
 
     public function getProductPrice(Request $request){
@@ -257,6 +258,8 @@ class ProductsController extends Controller
         $proArr = explode("-", $data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
         echo $proAttr->price;
+        echo "#";
+        echo $proAttr->stock;
 
     }
 
