@@ -248,9 +248,12 @@ class ProductsController extends Controller
     public function product($id){
         $productDetails = Product::with('attributes')->where('id', $id)->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+
+        $relatedProducts = Product::where('id', '!=', $id)->where(['category_id' => $productDetails->category_id])->get();
+
         $productAltImages = ProductsImage::where(['product_id' => $id])->get();
         $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
-        return view ('products.details', compact('productDetails', 'categories', 'productAltImages', 'total_stock'));
+        return view ('products.details', compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts'));
     }
 
     public function getProductPrice(Request $request){
