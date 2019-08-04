@@ -175,6 +175,17 @@ class ProductsController extends Controller
             $data = $request->all();
             foreach($data['sku'] as $key => $val){
                 if(!empty($val)){
+                    // SKU Check
+                    $attrCountSKU = ProductsAttribute::where('sku', $val)->count();
+                    if($attrCountSKU > 0){
+                        return redirect()->back()->with('flash_message_error', 'SKU Already Exits');
+                    }
+
+                    // Size Check
+                    $attrCountSizes = ProductsAttribute::where(['product_id' => $id, 'size' => $data['size'][$key]])->count();
+                    if($attrCountSizes > 0){
+                        return redirect()->back()->with('flash_message_error', 'Size Already Exits');
+                    }
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
                     $attribute->sku = $val;
