@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function (){
     // Product Attributes
     Route::match(['get', 'post'], '/admin/add-attributes/{id}', 'ProductsController@addAttributes')->name('addAttributes');
     Route::get('/admin/delete-attribute/{id}', 'ProductsController@deleteAttribute')->name('deleteAttribute');
+    Route::match(['get', 'post'], '/admin/add-images/{id}', 'ProductsController@addImages')->name('addImages');
 
 });
 

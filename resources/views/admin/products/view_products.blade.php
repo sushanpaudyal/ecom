@@ -60,6 +60,7 @@
                                             <a href="{{route('editProduct', $product->id)}}" class="btn btn-primary btn-mini">Edit</a>
                                             <a rel="{{$product->id}}" rel1="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
                                             <a class="btn btn-success btn-mini" href="{{route('addAttributes', $product->id)}}">Add</a>
+                                            <a class="btn btn-info btn-mini" href="{{route('addImages', $product->id)}}">Images</a>
 
                                         </td>
                                     </tr>
