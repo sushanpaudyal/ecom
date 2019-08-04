@@ -58,6 +58,13 @@ class ProductsController extends Controller
                 }
             }
 
+            if(empty($data['status'])){
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            $product->status = $status;
+
             $product->save();
             return redirect()->route('viewProducts')->with('flash_message_success', 'Product Created Successfully');
         }
@@ -114,7 +121,13 @@ class ProductsController extends Controller
                 $data['care'] = "";
             }
 
-            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'price' => $data['price'], 'image' => $filename ]);
+            if(empty($data['status'])){
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+
+            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'status' => $status,  'price' => $data['price'], 'image' => $filename ]);
             return redirect()->back()->with('flash_message_success', 'Product Updated Successfully');
 
         }
@@ -246,6 +259,13 @@ class ProductsController extends Controller
     }
 
     public function product($id){
+
+        //        Show 404 Page if product is disabled
+        $productsCount = Product::where(['id' => $id, 'status' => 1])->count();
+        if($productsCount ==0){
+            abort(404);
+        }
+
         $productDetails = Product::with('attributes')->where('id', $id)->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
 
