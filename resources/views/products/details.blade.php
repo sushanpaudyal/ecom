@@ -41,8 +41,15 @@
 
                         </div>
                         <div class="col-sm-7">
+                            <form action="{{url('add-cart')}}" name="addtocartForm" method="post" id="addtoCart" >
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$productDetails->id}}">
+                                <input type="hidden" name="product_name" value="{{$productDetails->product_name}}">
+                                <input type="hidden" name="product_code" value="{{$productDetails->product_code}}">
+                                <input type="hidden" name="product_color" value="{{$productDetails->product_color}}">
+                                <input type="hidden" id="price" name="price" value="{{$productDetails->price}}">
                             <div class="product-information"><!--/product-information-->
-                                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                                <img src="{{asset('images/backend_images/product-details/new.jpg')}}" class="newarrival" alt="" />
                                 <h2>{{$productDetails->product_name}}</h2>
                                 <p>Product Code: {{$productDetails->product_code}}</p>
 
@@ -59,9 +66,9 @@
                                 <span>
 									<span id="getPrice">Rs. {{$productDetails->price}}</span>
 									<label>Quantity:</label>
-									<input type="text" value="3" />
+									<input type="text" value="1" name="quantity"/>
 									@if($total_stock > 0)
-                                        <button type="button" class="btn btn-fefault cart" id="cartButton">
+                                        <button type="submit" class="btn btn-fefault cart" id="cartButton">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -70,6 +77,7 @@
                                 <p><b>Availability:</b> <span id="availability">@if($total_stock > 0) In Stock @else Out of Stock @endif</span></p>
                                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
                             </div><!--/product-information-->
+                            </form>
                         </div>
                     </div><!--/product-details-->
 

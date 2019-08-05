@@ -9,6 +9,7 @@ use App\ProductsImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -232,7 +233,6 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Attribute Delete successfully');
     }
 
-
     public function products($url = null)
     {
         $countCategory = Category::where(['url' => $url])->count();
@@ -316,7 +316,6 @@ class ProductsController extends Controller
         return view ('admin.products.add_images', compact('productDetails', 'productsImages'));
     }
 
-
     public function deleteAltImage($id = null){
         $productImage = ProductsImage::where(['id' => $id])->first();
 
@@ -337,6 +336,18 @@ class ProductsController extends Controller
 
         ProductsImage::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Product Alternate Image has been Deleted successfully');
+    }
+
+    public function addToCart(Request $request){
+        $data = $request->all();
+        if(empty($data['user_email'])) {
+            $data['user_email'] = "";
+        }
+        if(empty($data['session_id'])){
+            $data['session_id'] = "";
+        }
+        $sizeArr = explode("-", $data['size']);
+        DB::table('carts')->insert(['product_id' => $data['product_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'price' => $data['price'], 'size' => $sizeArr[1], 'quantity' => $data['quantity'], 'user_email' => $data['user_email'], 'session_id' => $data['session_id']]);
     }
 
 }
