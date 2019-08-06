@@ -24,6 +24,7 @@ Route::post('/product/get-product-price', 'ProductsController@getProductPrice');
 
 Route::match(['get', 'post'],'/add-cart', 'ProductsController@addToCart')->name('addToCart');
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart')->name('viewCart');
+Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct')->name('cart.delete');
 
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
