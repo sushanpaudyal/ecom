@@ -25,6 +25,7 @@ Route::post('/product/get-product-price', 'ProductsController@getProductPrice');
 Route::match(['get', 'post'],'/add-cart', 'ProductsController@addToCart')->name('addToCart');
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart')->name('viewCart');
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct')->name('cart.delete');
+Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity')->name('cartupdate.quantity');
 
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
