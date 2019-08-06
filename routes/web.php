@@ -23,6 +23,7 @@ Route::get('/product/{id}', 'ProductsController@product')->name('product');
 Route::post('/product/get-product-price', 'ProductsController@getProductPrice');
 
 Route::match(['get', 'post'],'/add-cart', 'ProductsController@addToCart')->name('addToCart');
+Route::match(['get', 'post'], '/cart', 'ProductsController@cart')->name('viewCart');
 
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
