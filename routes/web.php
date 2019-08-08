@@ -27,6 +27,9 @@ Route::match(['get', 'post'], '/cart', 'ProductsController@cart')->name('viewCar
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct')->name('cart.delete');
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity')->name('cartupdate.quantity');
 
+Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon')->name('apply.coupon');
+
+
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 

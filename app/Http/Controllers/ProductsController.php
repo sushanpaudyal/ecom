@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Coupon;
 use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
@@ -394,6 +395,16 @@ class ProductsController extends Controller
             return redirect('cart')->with('flash_message_success', 'Product Has Quantity has Been Updated');
         } else {
             return redirect('cart')->with('flash_message_error', 'Product Required Quantity is Out of Stock');
+        }
+    }
+
+    public function applyCoupon(Request $request){
+        $data = $request->all();
+        $couponCount = Coupon::where('coupon_code', $data['coupon_code'])->count();
+        if($couponCount == 0){
+            return redirect()->back()->with('flash_message_error', 'Coupon is Invalid');
+        } else {
+            echo "Success"; die;
         }
     }
 
