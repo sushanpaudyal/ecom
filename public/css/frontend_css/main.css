@@ -1181,6 +1181,9 @@ h2.title {
     display: inline-block;
     margin-left: 15px;
 }
+.item{
+    padding-left: 0;
+}
 
 .item-control {
     position: absolute;
