@@ -26,7 +26,7 @@
         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Banners</span> </a>
             <ul>
                 <li><a href="{{route('add.banner')}}">Add Banners</a></li>
-                <li><a href="{{route('view.coupon')}}">View Banners</a></li>
+                <li><a href="{{route('view.banner')}}">View Banners</a></li>
             </ul>
         </li>
 

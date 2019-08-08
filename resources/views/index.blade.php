@@ -7,21 +7,18 @@
                 <div class="col-sm-12">
                     <div id="slider-carousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#slider-carousel" data-slide-to="1"></li>
-                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                            @foreach($banners as $key => $banner)
+                                <li data-target="#slider-carousel" data-slide-to="0" class="@if($key == 0) active @endif"></li>
+                            @endforeach
                         </ol>
-
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="{{asset('images/frontend_images/banners/1.png')}}" alt="">
-                            </div>
+                            @foreach($banners as $key => $banner)
+                                <div class="item @if($key == 0) active @endif">
+                                    <img src="{{asset('images/frontend_images/banners/'.$banner->image)}}" alt="">
+                                </div>
+                            @endforeach
 
-                            <div class="item">
-                                <img src="{{asset('images/frontend_images/banners/2.png')}}" alt="">
-                            </div>
                         </div>
-
                         <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
                             <i class="fa fa-angle-left"></i>
                         </a>
