@@ -31,6 +31,9 @@ Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon')->name('apply
 
 Route::match(['get', 'post'], '/login-register', 'UsersController@register')->name('login.register');
 
+//remote email check
+Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
+
 
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');

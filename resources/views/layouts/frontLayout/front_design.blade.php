@@ -40,6 +40,7 @@
 <script src="{{asset('js/frontend_js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
 <script src="{{asset('js/frontend_js/main.js')}}"></script>
+<script src="{{asset('js/backend_js/jquery.validate.js')}}"></script>
 
 </body>
 </html>

@@ -106,5 +106,43 @@ $('.toggle').on('click', function() {
     }
 });
 
+$().ready(function(){
+    // Validate user form
+    $("#registerForm").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 2,
+                accept: "[a-zA-Z]+"
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            email:{
+                required: true,
+                email: true,
+                remote: "/check-email"
+            }
+        },
+        messages:{
+            name: {
+                required: "Please Enter your Name",
+                minlength: "Username must be 2 characters long",
+                accept: "Only letters are accepted"
+            },
+            password: {
+                required: "Please Provide your Password",
+                minlength: "Your Password must be atleast 6 characters long"
+            },
+            email:{
+                required: "Please Provide your email address",
+                email: "Please enter a valid email address",
+                remote: "Email Already Exists"
+            }
+        }
+    });
+});
+
 
 
