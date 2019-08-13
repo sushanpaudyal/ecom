@@ -35,7 +35,11 @@ Route::post('/user-register', 'UsersController@register')->name('loginregister')
 //remote email check
 Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
 
+Route::post('/user-login', 'UsersController@login');
+
 Route::get('/user-logout', 'UsersController@logout');
+
+
 
 
 
