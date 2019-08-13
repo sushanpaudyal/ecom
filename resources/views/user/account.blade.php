@@ -56,7 +56,7 @@
                     <div class="signup-form"><!--sign up form-->
                         <h2>Update Password</h2>
 
-                        <form action="" id="passwordForm" name="passwordForm" method="post">
+                        <form action="{{url('update-user-pwd')}}" id="passwordForm" name="passwordForm" method="post">
                             @csrf
                             <input type="password" name="current_pwd" id="current_pwd" placeholder="Current Password">
                             <span id="chkPwd"></span>
