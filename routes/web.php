@@ -29,10 +29,13 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCa
 
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon')->name('apply.coupon');
 
-Route::match(['get', 'post'], '/login-register', 'UsersController@register')->name('login.register');
+Route::get('/login-register', 'UsersController@userLoginregister')->name('login-register');
+Route::post('/user-register', 'UsersController@register')->name('loginregister');
 
 //remote email check
 Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
+
+Route::get('/user-logout', 'UsersController@logout');
 
 
 

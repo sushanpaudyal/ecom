@@ -30,7 +30,7 @@
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
                         <h2>New User Signup!</h2>
-                        <form action="{{route('login.register')}}" id="registerForm" name="registerForm" method="post">
+                        <form action="{{route('loginregister')}}" id="registerForm" name="registerForm" method="post">
                             @csrf
                             <input type="text" placeholder="Name" id="name" name="name"/>
                             <input type="email" placeholder="Email Address" id="email" name="email"/>
