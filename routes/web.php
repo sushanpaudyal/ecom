@@ -29,6 +29,8 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCa
 
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon')->name('apply.coupon');
 
+Route::match(['get', 'post'], '/login-register', 'UsersController@register')->name('login.register');
+
 
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
