@@ -169,6 +169,33 @@ $("#loginForm").validate({
     }
 });
 
+
+// checking user password
+$("#current_pwd").keyup(function(){
+    var current_pwd = $(this).val();
+    // alert(current_pwd);
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'post',
+        url: 'check-user-pwd',
+        data: {current_pwd:current_pwd},
+        success: function(resp){
+            // alert(resp);
+
+            if(resp=="False"){
+                $("#chkPwd").html("<font color='red'> Current Password Does Not Match </font>")
+            } else if(resp == "true"){
+                $("#chkPwd").html("<font color='green'> Current Password  Match </font>")
+
+            }
+        } , error: function(){
+            alert("Error")
+        }
+    });
+});
+
 $('#myPassword').passtrength({
     minChars: 4,
     passwordToggle: true,

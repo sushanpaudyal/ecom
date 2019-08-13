@@ -56,6 +56,17 @@
                     <div class="signup-form"><!--sign up form-->
                         <h2>Update Password</h2>
 
+                        <form action="" id="passwordForm" name="passwordForm" method="post">
+                            @csrf
+                            <input type="password" name="current_pwd" id="current_pwd" placeholder="Current Password">
+                            <span id="chkPwd"></span>
+
+                            <input type="password" name="new_pwd" id="new_pwd" placeholder="New Password">
+
+                            <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="Confirm Password">
+
+                            <button type="submit" class="btn-default btn">Update Password</button>
+                        </form>
                     </div><!--/sign up form-->
                 </div>
             </div>
