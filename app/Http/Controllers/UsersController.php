@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class UsersController extends Controller
 {
@@ -27,6 +28,7 @@ class UsersController extends Controller
                 $user->admin = "0";
                 $user->save();
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                    Session::put('frontSession', $data['email']);
                     return redirect('/cart');
                 }
             }
@@ -46,6 +48,7 @@ class UsersController extends Controller
 
     public function logout(){
         Auth::logout();
+        Session::forget('frontSession');
         return redirect('/');
     }
 
@@ -53,10 +56,15 @@ class UsersController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                Session::put('frontSession', $data['email']);
                 return redirect('/cart');
             } else {
                 return redirect()->back()->with('flash_message_error', 'Invalid Username or Password');
             }
         }
+    }
+
+    public function account(){
+        return view ('user.account');
     }
 }
