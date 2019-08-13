@@ -12,7 +12,7 @@
                     </div>
                 @endif
                 @if(Session::has('flash_message_success'))
-                    <div class="alert alert-error alert-block">
+                    <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">x</button>
                         <strong class="text-success">{!! session('flash_message_success') !!}</strong>
                     </div>
@@ -22,15 +22,15 @@
                         <h2>Update Account</h2>
 
 
-                        <form action="" id="accountForm" name="accountForm" method="post">
+                        <form action="{{url('/account')}}" id="accountForm" name="accountForm" method="post">
                             @csrf
-                            <input type="text" name="name" id="name" placeholder="Name" value="{{$userDetails->name}}" />
+                            <input type="text" name="name" id="name" placeholder="Name"  value="{{$userDetails->name}}"/>
 
-                            <input type="text" name="address" id="address" placeholder="Address "/>
+                            <input type="text" name="address" id="address" placeholder="Address " value="{{$userDetails->address}}"/>
 
-                            <input type="text" name="city" id="city" placeholder="City"/>
+                            <input type="text" name="city" id="city" placeholder="City" value="{{$userDetails->city}}"/>
 
-                            <input type="text" name="state" id="state" placeholder="State"/>
+                            <input type="text" name="state" id="state" placeholder="State" value="{{$userDetails->state}}"/>
 
                             <select name="country" id="country">
                                 <option value="">Select Country</option>
@@ -39,9 +39,9 @@
                                 @endforeach
                             </select>
 
-                            <input style="margin-top: 10px;" type="text" name="pincode" id="pincode" placeholder="Pin Code" value=""/>
+                            <input style="margin-top: 10px;" type="text" name="pincode" id="pincode" placeholder="Pin Code" value="{{$userDetails->pincode}}"/>
 
-                            <input type="text" name="mobile" id="mobile" placeholder="Mobile" value=""/>
+                            <input type="text" name="mobile" id="mobile" placeholder="Mobile" value="{{$userDetails->mobile}}"/>
 
                             <button type="submit" class="btn btn-default">Update</button>
 
