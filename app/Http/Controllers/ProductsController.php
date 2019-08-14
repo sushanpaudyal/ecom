@@ -506,10 +506,9 @@ class ProductsController extends Controller
                 $shipping->pincode = $data['shipping_pincode'];
                 $shipping->mobile = $data['shipping_mobile'];
                 $shipping->save();
-
-                return "Redirect to Order Review Page"; die;
-
             }
+
+            return redirect('/order-review');
         }
 
         return view ('products.checkout', compact('userDetails', 'shippingDetails'));
@@ -521,7 +520,15 @@ class ProductsController extends Controller
         $userDetails = User::find($user_id);
         $user_email = Auth::user()->email;
         $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
-        return view ('products.order_review', compact('userDetails'));
+
+        $userCart = DB::table('carts')->where(['user_email' => $user_email])->get();
+
+        foreach($userCart as $key => $product){
+            $productDetails = Product::where('id', $product->product_id)->first();
+            $userCart[$key]->image = $productDetails->image;
+        }
+
+        return view ('products.order_review', compact('userDetails', 'shippingDetails' , 'userCart'));
     }
 
 }

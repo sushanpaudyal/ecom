@@ -106,9 +106,60 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $total_amount = 0 ; ?>
+                    @foreach($userCart as $cart)
+                        <tr>
+                            <td class="cart_product">
+                                <a href=""><img src="{{asset('images/backend_images/products/small/'.$cart->image)}}" alt="" width="100px;"></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="">{{$cart->product_name}}</a></h4>
+                                <p>Web ID: {{$cart->product_code}}</p>
+                            </td>
+                            <td class="cart_price">
+                                <p>Rs. {{$cart->price}}</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->quantity}}" autocomplete="off" size="2">
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">Rs. {{$cart->price * $cart->quantity}}</p>
+                            </td>
 
+                        </tr>
 
+                        <?php $total_amount = $total_amount + ($cart->price * $cart->quantity); ?>
+                    @endforeach
 
+                    <tr>
+                        <td colspan="4">&nbsp;</td>
+                        <td colspan="2">
+                            <table class="table table-condensed total-result">
+                                <tr>
+                                    <td>Cart Sub Total</td>
+                                    <td>1000</td>
+                                </tr>
+
+                                <tr class="shipping-cost">
+                                    <td>Shipping Cost</td>
+                                    <td>Free</td>
+                                </tr>
+
+                                <tr class="shipping-cost">
+                                    <td>Discount Amount</td>
+
+                                        <td>Rs. 0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Total</td>
+                                    <td><span>1000></span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
