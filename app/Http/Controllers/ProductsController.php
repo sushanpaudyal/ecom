@@ -7,6 +7,7 @@ use App\Coupon;
 use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Image;
@@ -456,7 +457,9 @@ class ProductsController extends Controller
     }
 
     public function checkout(){
-        return view ('products.checkout');
+        $user_id = Auth::user()->id;
+        $userDetails = User::find($user_id);
+        return view ('products.checkout', compact('userDetails'));
     }
 
 }
