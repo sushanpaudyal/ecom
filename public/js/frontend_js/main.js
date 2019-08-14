@@ -246,13 +246,13 @@ $("#copyAddress").click(function(){
         $("#shipping_mobile").val($("#billing_mobile").val());
         $("#shipping_country").val($("#billing_country").val());
     } else {
-        $("#shipping_name").val();
-        $("#shipping_address").val();
-        $("#shipping_city").val();
-        $("#shipping_state").val();
-        $("#shipping_pincode").val();
-        $("#shipping_mobile").val();
-        $("#shipping_country").val();
+        $("#shipping_name").val('');
+        $("#shipping_address").val('');
+        $("#shipping_city").val('');
+        $("#shipping_state").val('');
+        $("#shipping_pincode").val('');
+        $("#shipping_mobile").val('');
+        $("#shipping_country").val('');
     }
 
 });
