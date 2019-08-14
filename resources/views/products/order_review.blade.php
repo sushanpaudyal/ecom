@@ -139,7 +139,7 @@
                             <table class="table table-condensed total-result">
                                 <tr>
                                     <td>Cart Sub Total</td>
-                                    <td>{{$total_amount}}</td>
+                                    <td> Rs. {{$total_amount}}</td>
                                 </tr>
 
                                 <tr class="shipping-cost">
@@ -152,13 +152,13 @@
                                     @if(!empty(Session::get('CouponAmount')))
                                         <td><?php echo Session::get('CouponAmount'); ?></td>
                                     @else
-                                        <td>0</td>
+                                        <td>Rs. 0</td>
                                     @endif
                                 </tr>
 
                                 <tr>
-                                    <td>Total</td>
-                                    <td><span>
+                                    <td>Grand Total</td>
+                                    <td><span> Rs.
                                             <?php echo $grand_total = $total_amount - Session::get('CouponAmount'); ?>
                                         </span></td>
                                 </tr>
