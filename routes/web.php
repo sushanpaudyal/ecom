@@ -109,6 +109,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::match(['get', 'post'], '/admin/edit-banner/{id}', 'BannersController@editBanner')->name('edit.banner');
     Route::get('/admin/delete-banner/{id}', 'BannersController@deleteBanner')->name('delete.banner');
 
+    // Orders
+    Route::get('/admin/view-orders', 'ProductsController@viewOrders')->name('view.order');
+
+
 
 });
 

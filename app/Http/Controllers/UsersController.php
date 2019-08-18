@@ -52,6 +52,7 @@ class UsersController extends Controller
     public function logout(){
         Auth::logout();
         Session::forget('frontSession');
+        Session::forget('session_id');
         return redirect('/');
     }
 
