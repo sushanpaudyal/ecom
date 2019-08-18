@@ -111,6 +111,7 @@ Route::group(['middleware' => ['auth']], function (){
 
     // Orders
     Route::get('/admin/view-orders', 'ProductsController@viewOrders')->name('view.order');
+    Route::get('/admn/view-order/{id}', 'ProductsController@viewOrderDetails')->name('viewOrderDetails');
 
 
 

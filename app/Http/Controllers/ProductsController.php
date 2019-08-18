@@ -650,5 +650,11 @@ class ProductsController extends Controller
         return view ('admin.orders.view_orders', compact('orders'));
     }
 
+    public function viewOrderDetails($order_id){
+        $orderDetails = Order::with('orders')->where('id', $order_id)->first();
+        $orderDetails = json_decode(json_encode($orderDetails));
+        return view ('admin.orders.order_details', compact('orderDetails'));
+    }
+
 }
 
