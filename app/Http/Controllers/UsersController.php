@@ -31,16 +31,24 @@ class UsersController extends Controller
                 $user->admin = "0";
                 $user->save();
 
-                    // Send Register Email
-                    $email = $data['email'];
-                    $messageData = ['email' => $data['email'], 'name' => $data['name']];
-                    Mail::send('email.register', $messageData, function($message) use ($email){
-                       $message->to($email)->subject('Registration With E-Commerce Website');
+//                    // Send Register Email
+//                    $email = $data['email'];
+//                    $messageData = ['email' => $data['email'], 'name' => $data['name']];
+//                    Mail::send('email.register', $messageData, function($message) use ($email){
+//                       $message->to($email)->subject('Registration With E-Commerce Website');
+//                    });
+
+                // Send Verification EMail
+                $email = $data['email'];
+                $messageData = ['email' => $data['email'],'name' => $data['name'], 'code' => base64_encode($data['email'])];
+                Mail::send('email.confirmation', $messageData, function($message) use ($email){
+                    $message->to($email)->subject('Email Confirmation');
                     });
+
 
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
                     Session::put('frontSession', $data['email']);
-                    return redirect('/cart');
+                    return redirect()->back()->with('flash_message_success', 'Please Confirm Your Email Address');
                 }
             }
         }
@@ -67,7 +75,11 @@ class UsersController extends Controller
     public function login(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();
-            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])){
+                $userStatus = User::where('email', $data['email'])->first();
+                if($userStatus->status == 0){
+                    return redirect()->back()->with('flash_message_error', 'Please Activate Your Account');
+                }
                 Session::put('frontSession', $data['email']);
                 return redirect('/cart');
             } else {
