@@ -13,6 +13,7 @@ use App\ProductsImage;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Image;
 use DB;
 use Session;
@@ -616,6 +617,23 @@ class ProductsController extends Controller
 
             Session::put('order_id', $order_id);
             Session::put('grand_total', $data['grand_total']);
+
+
+            // Sending Order Email
+
+            $productDetails = Order::with('orders')->where('id', $order_id)->first();
+            $userDetails = User::where('id', $user_id)->first();
+            $email = $user_email;
+            $messageData = [
+              'email' => $email,
+              'name'  => $shippingDetails->name,
+                'order_id' => $order_id,
+                'productDetails' => $productDetails,
+                'userDetails' => $userDetails
+            ];
+            Mail::send('email.order', $messageData, function($message) use ($email){
+                $message->to($email)->subject('Order Placed - E-Commerce Website');
+            });
 
             return redirect()->route('thanks');
 
