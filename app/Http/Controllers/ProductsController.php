@@ -6,6 +6,7 @@ use App\Category;
 use App\Coupon;
 use App\DeliveryAddress;
 use App\Order;
+use App\OrdersProduct;
 use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
@@ -590,6 +591,23 @@ class ProductsController extends Controller
             $order->shipping_charges = $data['shipping_charges'];
             $order->grand_total = $data['grand_total'];
             $order->save();
+
+
+            $order_id = DB::getPdo()->lastInsertId();
+
+            $cartProducts = DB::table('carts')->where(['user_email' => $user_email])->get();
+            foreach($cartProducts as $pro){
+                $cartPro = new OrdersProduct();
+                $cartPro->order_id = $order_id;
+                $cartPro->user_id = $user_id;
+                $cartPro->product_id = $pro->product_id;
+                $cartPro->product_code = $pro->product_code;
+                $cartPro->product_name = $pro->product_name;
+                $cartPro->product_size = $pro->size;
+                $cartPro->price = $pro->price;
+                $cartPro->product_qty = $pro->quantity;
+                $cartPro->save();
+            }
         }
     }
 
