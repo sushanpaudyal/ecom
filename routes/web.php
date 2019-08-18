@@ -41,6 +41,7 @@ Route::get('/user-logout', 'UsersController@logout');
 
 
 
+
 Route::group(['middleware' => ['frontlogin']], function(){
     Route::match(['get', 'post'], '/account', 'UsersController@account');
 
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['frontlogin']], function(){
 
     Route::match(['get','post'],'/place-order','ProductsController@placeOrder');
 
+    Route::get('/thanks','ProductsController@thanks')->name('thanks');
 
 
 });
