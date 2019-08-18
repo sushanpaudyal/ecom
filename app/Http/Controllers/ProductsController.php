@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Coupon;
 use App\DeliveryAddress;
+use App\Order;
 use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
@@ -374,8 +375,15 @@ class ProductsController extends Controller
     }
 
     public function cart(){
-        $session_id = Session::get('session_id');
-        $userCart = DB::table('carts')->where(['session_id' => $session_id])->get();
+
+        if(Auth::check()){
+            $user_email = Auth::user()->email;
+            $userCart = DB::table('carts')->where(['user_email' => $user_email])->get();
+        } else {
+            $sesion_id = Session::get('session_id');
+            $userCart = DB::table('carts')->where(['session_id' => $sesion_id])->get();
+        }
+
 
         foreach($userCart as $key => $product){
             $productDetails = Product::where('id', $product->product_id)->first();
@@ -435,7 +443,13 @@ class ProductsController extends Controller
 
             $session_id = Session::get('session_id');
 
-            $userCart = DB::table('carts')->where(['session_id' => $session_id])->get();
+            if(Auth::check()){
+                $user_email = Auth::user()->email;
+                $userCart = DB::table('carts')->where(['user_email' => $user_email])->get();
+            } else {
+                $sesion_id = Session::get('session_id');
+                $userCart = DB::table('carts')->where(['session_id' => $sesion_id])->get();
+            }
 
             $total_amount = 0;
             foreach($userCart as  $item){
@@ -535,7 +549,47 @@ class ProductsController extends Controller
     public function placeOrder(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();
-            dd($data);
+            $user_id = Auth::user()->id;
+            $user_email = Auth::user()->email;
+            //Getting the shipping details of the user
+            $shippingDetails = DeliveryAddress::where(['user_email' => $user_email])->first();
+
+
+            if(empty(Session::get('CouponCode'))){
+                $coupon_code = 0;
+            } else {
+                $coupon_code = Session::get('CouponCode');
+            }
+
+            if(empty(Session::get('CouponAmount'))){
+                $coupon_amount = 0;
+            } else {
+                $coupon_amount = Session::get('CouponAmount');
+            }
+
+            if(empty($data['shipping_charges'])){
+                $data['shipping_charges'] = 0;
+            }
+
+
+            $order = new Order;
+            $order->user_id = $user_id;
+            $order->user_email = $user_email;
+
+            $order->name = $shippingDetails->name;
+            $order->address = $shippingDetails->address;
+            $order->city = $shippingDetails->city;
+            $order->state = $shippingDetails->state;
+            $order->pincodee = $shippingDetails->pincode;
+            $order->country = $shippingDetails->country;
+            $order->mobile = $shippingDetails->mobile;
+            $order->coupon_code = $coupon_code;
+            $order->coupon_amount = $coupon_amount;
+            $order->order_status = "New";
+            $order->payment_method = $data['payment_method'];
+            $order->shipping_charges = $data['shipping_charges'];
+            $order->grand_total = $data['grand_total'];
+            $order->save();
         }
     }
 

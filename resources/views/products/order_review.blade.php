@@ -56,27 +56,27 @@
                     <div class="signup-form"><!--sign up form-->
                         <h2>Shipping Address</h2>
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping Name" id="shipping_name" name="shipping_name" class="form-control"/>
+                            <input type="text" placeholder="Shipping Name" id="shipping_name" name="shipping_name" class="form-control" value="{{$shippingDetails->name}}"/>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping Address" id="shipping_address" name="shipping_address"  class="form-control" />
+                            <input type="text" placeholder="Shipping Address" id="shipping_address" name="shipping_address" value="{{$shippingDetails->address}}" class="form-control" />
                         </div>
 
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping City" id="shipping_city" name="shipping_city"  class="form-control" />
+                            <input type="text" placeholder="Shipping City" id="shipping_city" name="shipping_city" value="{{$shippingDetails->city}}" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping State" id="shipping_state" name="shipping_state"  class="form-control" />
+                            <input type="text" placeholder="Shipping State" id="shipping_state" name="shipping_state" value="{{$shippingDetails->state}}" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping Country" id="shipping_country" name="shipping_country" class="form-control" />
+                            <input type="text" placeholder="Shipping Country" id="shipping_country" name="shipping_country" value="{{$shippingDetails->country}}"class="form-control" />
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping Pincode" id="shipping_pincode" name="shipping_pincode"  class="form-control" />
+                            <input type="text" placeholder="Shipping Pincode" id="shipping_pincode" name="shipping_pincode" value="{{$shippingDetails->pincode}}" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Shipping Mobile" id="shipping_mobile" name="shipping_mobile"  class="form-control" />
+                            <input type="text" placeholder="Shipping Mobile" id="shipping_mobile" name="shipping_mobile" value="{{$shippingDetails->mobile}}" class="form-control" />
                         </div>
 
                     </div><!--/sign up form-->
@@ -171,7 +171,7 @@
 
             <form action="{{url('/place-order')}}" name="paymentForm" id="paymentForm" method="post">
                 @csrf
-                <input type="hidden" name="grand_total" value="">
+                <input type="hidden" name="grand_total" value="{{$grand_total}}">
                 <div class="payment-options">
 					<span>
 						<label> Select Payment Method</label>

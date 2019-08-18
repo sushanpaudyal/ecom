@@ -34,7 +34,6 @@
                         <td></td>
                     </tr>
                     </thead>
-                    <?php $total_amount = 0; ?>
                     <tbody>
                     <?php $total_amount = 0 ; ?>
                     @foreach($userCart as $cart)
