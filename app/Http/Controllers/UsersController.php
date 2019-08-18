@@ -6,9 +6,9 @@ use App\Country;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use Session;
 use Illuminate\Support\Facades\Hash;
-
 
 class UsersController extends Controller
 {
@@ -30,6 +30,14 @@ class UsersController extends Controller
                 $user->password = bcrypt($data['password']);
                 $user->admin = "0";
                 $user->save();
+
+                    // Send Register Email
+                    $email = $data['email'];
+                    $messageData = ['email' => $data['email'], 'name' => $data['name']];
+                    Mail::send('email.register', $messageData, function($message) use ($email){
+                       $message->to($email)->subject('Registration With E-Commerce Website');
+                    });
+
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
                     Session::put('frontSession', $data['email']);
                     return redirect('/cart');
