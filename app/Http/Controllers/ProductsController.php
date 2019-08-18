@@ -687,5 +687,16 @@ class ProductsController extends Controller
         }
     }
 
+    public function searchProducts(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+            $search_product =  $data['product'];
+            $productsAll = Product::where('product_name', 'like', '%'.$search_product.'%')->orwhere('product_code',$search_product)->where('status',1)->get();
+            return view ('products.listing', compact('categories', 'productsAll', 'search_product'));
+        }
+    }
+
 }
 

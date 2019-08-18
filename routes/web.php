@@ -41,6 +41,7 @@ Route::get('/user-logout', 'UsersController@logout');
 
 Route::get('/confirm/{code}', 'UsersController@confirmAccount');
 
+Route::post('/search-products', 'ProductsController@searchProducts')->name('search-products');
 
 
 
