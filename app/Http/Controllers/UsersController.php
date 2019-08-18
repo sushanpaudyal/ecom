@@ -182,4 +182,9 @@ class UsersController extends Controller
 
         }
     }
+
+    public function viewUsers(){
+        $users = User::get();
+        return view ('admin.users.view_users', compact('users'));
+    }
 }

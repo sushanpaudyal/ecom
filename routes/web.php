@@ -116,7 +116,8 @@ Route::group(['middleware' => ['adminlogin']], function (){
     Route::get('/admn/view-order/{id}', 'ProductsController@viewOrderDetails')->name('viewOrderDetails');
     Route::post('/admin/update-order-status', 'ProductsController@updateOrderStatus')->name('updateOrderStatus');
 
-
+    // Admin User Routes
+    Route::get('/admin/view-user', 'UsersController@viewUsers')->name('viewUsers');
 
 });
 

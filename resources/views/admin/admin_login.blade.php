@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Matrix Admin</title><meta charset="UTF-8" />
+    <title>Admin Login</title><meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/backend_css/bootstrap-responsive.min.css')}}" />
@@ -28,7 +28,7 @@
     @endif
     <form action="{{ url('admin') }}"  method="post" id="loginform" class="form-vertical" action="javascript:">
         @csrf
-        <div class="control-group normal_text"> <h3><img src="{{asset('images/backend_images/logo.png')}}" alt="Logo" /></h3></div>
+        <div class="control-group normal_text"> <h3>E-Commerce Admin Login</h3></div>
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
@@ -59,7 +59,7 @@
 
         <div class="form-actions">
             <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-            <span class="pull-right"><a class="btn btn-info"/>Reecover</a></span>
+            <span class="pull-right"><a class="btn btn-info"/>Recover</a></span>
         </div>
     </form>
 </div>
