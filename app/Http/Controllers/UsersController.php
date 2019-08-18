@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use Session;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class UsersController extends Controller
 {
