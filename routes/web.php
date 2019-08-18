@@ -39,6 +39,8 @@ Route::post('/user-login', 'UsersController@login');
 
 Route::get('/user-logout', 'UsersController@logout');
 
+Route::get('/confirm/{code}', 'UsersController@confirmAccount');
+
 
 
 

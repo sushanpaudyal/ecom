@@ -31,13 +31,6 @@ class UsersController extends Controller
                 $user->admin = "0";
                 $user->save();
 
-//                    // Send Register Email
-//                    $email = $data['email'];
-//                    $messageData = ['email' => $data['email'], 'name' => $data['name']];
-//                    Mail::send('email.register', $messageData, function($message) use ($email){
-//                       $message->to($email)->subject('Registration With E-Commerce Website');
-//                    });
-
                 // Send Verification EMail
                 $email = $data['email'];
                 $messageData = ['email' => $data['email'],'name' => $data['name'], 'code' => base64_encode($data['email'])];
@@ -81,10 +74,41 @@ class UsersController extends Controller
                     return redirect()->back()->with('flash_message_error', 'Please Activate Your Account');
                 }
                 Session::put('frontSession', $data['email']);
+
+                if(!empty(Session::get('session_id'))){
+                    $session_id = Session::get('session_id');
+                    DB::table('carts')->where('session_id', $session_id)->update(['user_email' => $data['email']]);
+                }
+
                 return redirect('/cart');
             } else {
                 return redirect()->back()->with('flash_message_error', 'Invalid Username or Password');
             }
+        }
+    }
+
+
+    public function confirmAccount($email){
+        $email = base64_decode($email);
+        $userCount = User::where('email', $email)->count();
+        if($userCount > 0){
+            $userDetails = User::where('email', $email)->first();
+            if($userDetails->status == 1){
+                return redirect('login-register')->with('flash_message_success', 'Your Email is already activated');
+            } else {
+                User::where('email', $email)->update(['status' => 1]);
+
+                // Send Welcome Email
+                $messageData = ['email' => $email,'name' => $userDetails->name];
+                Mail::send('email.welcome', $messageData, function($message) use ($email){
+                    $message->to($email)->subject('Welcome To E-Commerce Website');
+                });
+
+                return redirect('login-register')->with('flash_message_success', 'Your Email is activated');
+
+            }
+        } else {
+            abort(404);
         }
     }
 
