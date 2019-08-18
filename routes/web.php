@@ -71,7 +71,7 @@ Route::group(['middleware' => ['frontlogin']], function(){
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-Route::group(['middleware' => ['auth']], function (){
+Route::group(['middleware' => ['adminlogin']], function (){
     Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::get('/admin/settings', 'AdminController@settings')->name('admin.settings');
     Route::get('/admin/check-pwd', 'AdminController@chkPassword')->name('chkPassword');

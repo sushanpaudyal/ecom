@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -13,11 +14,15 @@ class AdminController extends Controller
     public function login(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => 1])){
-               return redirect()->route('admin.dashboard');
+
+            $adminCount = Admin::where(['username' => $data['username'], 'password' => md5($data['password']), 'status' => 1])->count();
+            if($adminCount > 0 ){
+                Session::put('adminSession', $data['username']);
+                return redirect()->route('admin.dashboard');
             } else {
                 return redirect('/admin')->with('flash_message_error', 'Invalid Username or Password');
             }
+
         }
         return view ('admin.admin_login');
     }
