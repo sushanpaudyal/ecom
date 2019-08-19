@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\CmsPage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CmsController extends Controller
 {
@@ -63,7 +64,17 @@ class CmsController extends Controller
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         if($request->isMethod('post')){
             $data = $request->all();
-            dd($data);
+            $email = "sushan.paudyal@gmail.com";
+            $messageData = [
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'subject'=> $data['subject'],
+                'content' => $data['message']
+                ];
+            Mail::send('email.enquiry', $messageData, function($message) use ($email){
+               $message->to($email)->subject('Enquiry Form E-Com Website');
+            });
+            return redirect()->back()->with('flash_message_error', 'Thank you for your enquiry. We will get back to you very soon');
         }
         return view ('pages.contact', compact('categories'));
     }

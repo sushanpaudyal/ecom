@@ -7,6 +7,19 @@
         <div class="bg">
 
             <div class="row">
+                @if(Session::has('flash_message_error'))
+                    <div class="alert alert-warning alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{!! session('flash_message_error') !!}</strong>
+                    </div>
+                @endif
+
+                @if(Session::has('flash_message_success'))
+                    <div class="alert alert-warning alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{!! session('flash_message_success') !!}</strong>
+                    </div>
+                @endif
                 <div class="col-sm-8">
                     <div class="contact-form">
                         <h2 class="title text-center">Get In Touch</h2>
