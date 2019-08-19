@@ -266,3 +266,12 @@ function selectPaymentMethod(){
 }
 
 
+function checkPinCode() {
+    var pincode = $("#chkPincode").val();
+    if(pincode == ""){
+        alert("Please Enter Pincode"); return false;
+
+    }
+}
+
+

@@ -81,7 +81,13 @@
                                         @endif
 								</span>
                                 <p><b>Availability:</b> <span id="availability">@if($total_stock > 0) In Stock @else Out of Stock @endif</span></p>
-                                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+
+                                <p>
+                                    <b>Delivery</b>
+                                    <input type="text" name="pincode" id="chkPincode" placeholder="Check Pincode" >
+                                    <button type="button" onclick="return checkPinCode()">Go</button>
+                                </p>
+
                             </div><!--/product-information-->
                             </form>
                         </div>
