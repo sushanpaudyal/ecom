@@ -64,6 +64,9 @@
                                             <a href="{{route('viewOrderDetails', $order->id)}}" class="btn btn-success btn-mini">
                                                 View Order Details
                                             </a>
+                                            <a href="{{route('viewOrderInvoice', $order->id)}}" class="btn btn-primary btn-mini">
+                                                Invoice
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

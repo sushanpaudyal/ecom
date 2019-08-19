@@ -710,5 +710,15 @@ class ProductsController extends Controller
         }
     }
 
+
+    public function viewOrderInvoice($order_id){
+        $orderDetails = Order::with('orders')->where('id', $order_id)->first();
+        $orderDetails = json_decode(json_encode($orderDetails));
+
+        $user_id = $orderDetails->user_id;
+        $userDetails = User::where('id', $user_id)->first();
+        return view ('admin.orders.order_invoice', compact('orderDetails', 'userDetails'));
+    }
+
 }
 
