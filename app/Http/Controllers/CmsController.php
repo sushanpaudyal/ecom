@@ -6,6 +6,7 @@ use App\Category;
 use App\CmsPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Validator;
 
 class CmsController extends Controller
 {
@@ -64,6 +65,19 @@ class CmsController extends Controller
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         if($request->isMethod('post')){
             $data = $request->all();
+
+            $validator = Validator::make($request->all(),[
+               'name' => 'required|max:255',
+               'email' => 'required|email',
+               'subject' => 'required',
+               'message' => 'required'
+            ]);
+
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+
             $email = "sushan.paudyal@gmail.com";
             $messageData = [
                 'name' => $data['name'],
