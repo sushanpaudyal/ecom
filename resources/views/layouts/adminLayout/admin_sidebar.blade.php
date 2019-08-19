@@ -53,6 +53,13 @@
             </ul>
         </li>
 
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>CMS Pages</span> </a>
+            <ul <?php if(preg_match("/cms-page/i", $url)) { echo 'style="display:block;"';} ?>>
+                <li <?php if(preg_match("/add-cms-page/i", $url)) { echo 'class="active"';} ?>><a href="{{route('addProduct')}}">Add CMS Pages</a></li>
+                <li <?php if(preg_match("/view-cms-page/i", $url)) { echo 'class="active"';} ?>><a href="{{route('viewProducts')}}">View CMS Pages</a></li>
+            </ul>
+        </li>
+
     </ul>
 </div>
 <!--sidebar-menu-->
