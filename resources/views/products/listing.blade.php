@@ -112,7 +112,9 @@
                     </div><!--features_items-->
 
 
-
+                    <div class="text-center">
+                        {{$productsAll->links()}}
+                    </div>
 
 
                 </div>
