@@ -26,4 +26,9 @@ class CmsController extends Controller
         }
         return view ('admin.pages.add_cms_page');
     }
+
+    public function viewCmsPages(){
+        $cmsPages = CmsPage::get();
+        return view ('admin.pages.view_cms_pages', compact('cmsPages'));
+    }
 }
