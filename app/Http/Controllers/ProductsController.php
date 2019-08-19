@@ -732,5 +732,18 @@ class ProductsController extends Controller
         return view ('admin.orders.order_invoice', compact('orderDetails', 'userDetails'));
     }
 
+    public function checkPinCode(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+//            echo "<pre>"; print_r($data); die;
+            $pincodeCount = DB::table('pincodes')->where('pincode', $data['pincode'])->count();
+            if($pincodeCount > 0){
+                echo "This Pincode is available for Delivery";
+            } else {
+                echo "Delivery Not Available in this Pincode";
+            }
+        }
+    }
+
 }
 

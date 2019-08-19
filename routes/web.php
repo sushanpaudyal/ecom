@@ -144,3 +144,5 @@ Route::match(['get', 'post'], '/page/contact_us', 'CmsController@contact')->name
 // Route for CMS Pages
 Route::match(['get', 'post'], '/page/{url}', 'CmsController@cmsPage')->name('cmsPage');
 
+Route::post('/check-pincode', 'ProductsController@checkPinCode');
+

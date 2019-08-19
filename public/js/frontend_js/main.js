@@ -270,8 +270,23 @@ function checkPinCode() {
     var pincode = $("#chkPincode").val();
     if(pincode == ""){
         alert("Please Enter Pincode"); return false;
-
     }
+    $.ajax({
+      type : 'post',
+      data: {pincode:pincode},
+      url: '/check-pincode',
+      success: function(resp){
+          // alert(resp);
+          // $("#pincodeResponse").text(resp);
+          if(resp == "This Pincode is available for Delivery"){
+              $("#pincodeResponse").html("<b style='color: green;'>" + resp + "<b>");
+          } else if(resp == "Delivery Not Available in this Pincode") {
+              $("#pincodeResponse").html("<b style='color: red;'>" + resp + "<b>");
+          }
+      }, error: function(){
+          alert("Error");
+        }
+    });
 }
 
 

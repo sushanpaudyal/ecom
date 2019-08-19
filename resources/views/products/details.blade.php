@@ -86,6 +86,7 @@
                                     <b>Delivery</b>
                                     <input type="text" name="pincode" id="chkPincode" placeholder="Check Pincode" >
                                     <button type="button" onclick="return checkPinCode()">Go</button>
+                                    <span id="pincodeResponse"></span>
                                 </p>
 
                             </div><!--/product-information-->
