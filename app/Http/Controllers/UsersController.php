@@ -187,4 +187,15 @@ class UsersController extends Controller
         $users = User::get();
         return view ('admin.users.view_users', compact('users'));
     }
+
+    public function forgetPassword(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $userCount = User::where('email', $data['email'])->count();
+            if($userCount == 0){
+                return redirect()->back()->with('flash_message_error', 'Email does not exists');
+            }
+        }
+        return view ('user.forget_password');
+    }
 }

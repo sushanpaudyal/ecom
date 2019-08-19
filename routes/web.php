@@ -43,6 +43,8 @@ Route::get('/confirm/{code}', 'UsersController@confirmAccount');
 
 Route::post('/search-products', 'ProductsController@searchProducts')->name('search-products');
 
+Route::match(['get', 'post'], '/forget-password' ,'UsersController@forgetPassword')->name('forgetPassword');
+
 
 
 Route::group(['middleware' => ['frontlogin']], function(){

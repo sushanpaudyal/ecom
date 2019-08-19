@@ -11,23 +11,22 @@
                     </div>
                 @endif
 
-                    @if(Session::has('flash_message_success'))
-                        <div class="alert alert-warning alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>{!! session('flash_message_success') !!}</strong>
-                        </div>
-                    @endif
+                @if(Session::has('flash_message_success'))
+                    <div class="alert alert-warning alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{!! session('flash_message_success') !!}</strong>
+                    </div>
+                @endif
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
-                        <h2>Login to your account</h2>
-                        <form action="{{url('/user-login')}}" id="loginForm" name="loginForm" method="post">
+                        <h2>Forget Password</h2>
+                        <form action="{{url('/forget-password')}}" id="forgetPasswordForm" name="forgetPasswordForm" method="post">
                             @csrf
-                            <input type="email" name="email" placeholder="Email Address" />
-                            <input type="password" name="password" placeholder="Password" />
+                            <input type="email" name="email" placeholder="Email Address" required/>
 
-                            <button type="submit" class="btn btn-default">Login</button>
+                            <button type="submit" class="btn btn-default">Submit</button>
                             <br>
-                            <a href="{{{url('/forget-password')}}}">Forget Password ?</a>
+                            <a href="{{{url('/login-register')}}}">Login Page ?</a>
                         </form>
                     </div><!--/login form-->
                 </div>
@@ -49,4 +48,4 @@
             </div>
         </div>
     </section><!--/form-->
-    @endsection
+@endsection
