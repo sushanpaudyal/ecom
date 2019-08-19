@@ -53,8 +53,8 @@
                                         <td>{{$cms->created_at}}</td>
                                         <td>
                                             <a class="btn btn-success btn-mini" href="#myModal{{$cms->id}}" data-toggle="modal">View</a>
-                                            <a href="" class="btn btn-primary btn-mini">Edit</a>
-                                            <a rel="{{$cms->id}}" rel1="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
+                                            <a href="{{route('edit-cms-page', $cms->id)}}" class="btn btn-primary btn-mini">Edit</a>
+                                            <a rel="{{$cms->id}}" rel1="delete-cms-page" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
                                         </td>
                                     </tr>
 
