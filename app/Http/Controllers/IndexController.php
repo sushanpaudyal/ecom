@@ -13,6 +13,12 @@ class IndexController extends Controller
         $productsAll = Product::orderBy('id', 'DESC')->where('status', '=', 1)->where('feature_item', '=', 1)->paginate(3);
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         $banners = Banner::where('status', '1')->get();
-        return view ('index', compact('productsAll', 'categories', 'banners'));
+
+        // Meta Tags
+        $meta_title = "E-Shop Sample Website";
+        $meta_description = "Online Shoppong Site For Everyone";
+        $meta_keywords = "eshop website, online shopping";
+
+        return view ('index', compact('productsAll', 'categories', 'banners', 'meta_title', 'meta_keywords', 'meta_description'));
     }
 }
