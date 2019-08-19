@@ -59,6 +59,15 @@ class CmsController extends Controller
         return redirect()->back()->with('flash_message_success', 'CMS Page Deleted Successfully');
     }
 
+    public function contact(Request $request){
+        $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+        if($request->isMethod('post')){
+            $data = $request->all();
+            dd($data);
+        }
+        return view ('pages.contact', compact('categories'));
+    }
+
     public function cmsPage($url){
         // Redirect to 404 is the status is disabled
         $cmsPageCount = CmsPage::where(['url' => $url, 'status' => 1])->count();
@@ -66,9 +75,10 @@ class CmsController extends Controller
             abort(404);
         }
 
-
         $cmsPageDetails = CmsPage::where('url', $url)->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
         return view ('pages.cms_page', compact('cmsPageDetails', 'categories'));
     }
+
+
 }
