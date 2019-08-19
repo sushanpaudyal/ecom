@@ -1,3 +1,7 @@
+<?php
+  use App\Product;
+?>
+
 <div class="left-sidebar">
     <h2>Category</h2>
     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -15,7 +19,8 @@
                     <div class="panel-body">
                         <ul>
                             @foreach($cat->categories as $subcat)
-                                <li><a href="{{route('products', $subcat->url)}}">{{$subcat->name}}</a></li>
+                                <?php $productCount = Product::productCount($subcat->id); ?>
+                                <li><a href="{{route('products', $subcat->url)}}">{{$subcat->name}}</a> ({{$productCount}})</li>
                             @endforeach
                         </ul>
                     </div>

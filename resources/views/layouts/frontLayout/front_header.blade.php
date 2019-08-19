@@ -1,6 +1,8 @@
 <?php
-  use App\Http\Controllers\Controller;
-  $mainCategories = Controller::mainCategories();
+use App\Http\Controllers\Controller;
+use App\Product;
+$mainCategories = Controller::mainCategories();
+$cartCount = Product::cartCount();
 ?>
 
 <header id="header"><!--header-->
@@ -65,7 +67,7 @@
                     <div class="shop-menu clearfix pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-                            <li><a href="{{route('viewCart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{route('viewCart')}}"><i class="fa fa-shopping-cart"></i> Cart ({{ $cartCount }})</a></li>
 
                             @if(empty(Auth::check()))
                                 <li><a href="{{url('login-register')}}"><i class="fa fa-lock"></i> Login</a></li>
