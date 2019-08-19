@@ -110,8 +110,7 @@
                     <div class="single-widget">
                         <h2>Policies</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Privecy Policy</a></li>
+                            <li><a href="{{url('/page/about_us')}}">About Us</a></li>
                             <li><a href="#">Refund Policy</a></li>
                             <li><a href="#">Billing System</a></li>
                             <li><a href="#">Ticket System</a></li>

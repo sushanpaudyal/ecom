@@ -138,3 +138,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+
+// Route for CMS Pages
+Route::match(['get', 'post'], '/page/{url}', 'CmsController@cmsPage')->name('cmsPage');

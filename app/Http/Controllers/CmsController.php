@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\CmsPage;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,18 @@ class CmsController extends Controller
         $cmsPage = CmsPage::findOrFail($id);
         $cmsPage->delete();
         return redirect()->back()->with('flash_message_success', 'CMS Page Deleted Successfully');
+    }
 
+    public function cmsPage($url){
+        // Redirect to 404 is the status is disabled
+        $cmsPageCount = CmsPage::where(['url' => $url, 'status' => 1])->count();
+        if($cmsPageCount == 0){
+            abort(404);
+        }
+
+
+        $cmsPageDetails = CmsPage::where('url', $url)->first();
+        $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+        return view ('pages.cms_page', compact('cmsPageDetails', 'categories'));
     }
 }
