@@ -195,6 +195,23 @@ class UsersController extends Controller
             if($userCount == 0){
                 return redirect()->back()->with('flash_message_error', 'Email does not exists');
             }
+            // Get User Details
+            $userDetails = User::where('email', $data['email'])->first();
+            // Generate Random Password
+            $random_password = str_random(8);
+            //encode password
+            $new_password = bcrypt($random_password);
+            // Update Password
+            User::where('email', $data['email'])->update(['password' => $new_password]);
+
+            // Send Forget Password Email Code
+            $email = $data['email'];
+            $name = $userDetails->name;
+            $messageData = ['email' => $data['email'], 'password' => $random_password, 'name' => $name];
+            Mail::send('email.forgotpassword', $messageData, function($message) use ($email){
+                $message->to($email)->subject('New Password - E-Commerce Website');
+            });
+            return redirect()->back()->with('flash_message_error', 'Please check your email for a new password');
         }
         return view ('user.forget_password');
     }
