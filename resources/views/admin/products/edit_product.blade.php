@@ -99,6 +99,13 @@
                                 </div>
 
                                 <div class="control-group">
+                                    <label class="control-label">Featured Item</label>
+                                    <div class="controls">
+                                        <input type="checkbox" name="feature_item" id="feature_item" value="1" @if($productDetails->feature_item == "1") checked @endif>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
                                     <label class="control-label">Status Enable</label>
                                     <div class="controls">
                                         <input type="checkbox" name="status" id="status" value="1" @if($productDetails->status == "1") checked @endif>

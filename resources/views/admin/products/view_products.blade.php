@@ -40,6 +40,7 @@
                                     <th>Prodcut Code</th>
                                     <th>Product Color</th>
                                     <th>Price</th>
+                                    <th>Featured Item</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -55,6 +56,9 @@
                                         <td>{{$product->product_code}}</td>
                                         <td>{{$product->product_color}}</td>
                                         <td>{{$product->price}}</td>
+                                        <td>
+                                            @if($product->feature_item == 1) Yes @else No @endif
+                                        </td>
                                         <td class="center">
                                             <a class="btn btn-success btn-mini" href="#myModal{{$product->id}}" data-toggle="modal">View</a>
                                             <a href="{{route('editProduct', $product->id)}}" class="btn btn-primary btn-mini">Edit</a>
