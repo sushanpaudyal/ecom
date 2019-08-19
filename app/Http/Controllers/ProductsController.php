@@ -555,6 +555,13 @@ class ProductsController extends Controller
                 $shipping->save();
             }
 
+
+            // checking pincodes
+            $pincodeCount = DB::table('pincodes')->where('pincode', $data['shipping_pincode'])->count();
+            if($pincodeCount == 0){
+                return redirect()->back()->with('flash_message_error', 'Your location is not available for the delivery. Please choose another pincode location)');
+            }
+
             return redirect('/order-review');
         }
 
@@ -586,6 +593,13 @@ class ProductsController extends Controller
             $user_email = Auth::user()->email;
             //Getting the shipping details of the user
             $shippingDetails = DeliveryAddress::where(['user_email' => $user_email])->first();
+
+
+            // checking pincodes
+            $pincodeCount = DB::table('pincodes')->where('pincode', $shippingDetails->pincode)->count();
+            if($pincodeCount == 0){
+                return redirect()->back()->with('flash_message_error', 'Your location is not available for the delivery. Please choose another pincode location)');
+            }
 
 
             if(empty(Session::get('CouponCode'))){
