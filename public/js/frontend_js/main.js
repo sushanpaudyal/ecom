@@ -48,7 +48,9 @@ $(document).ready(function () {
             data:{idSize:idSize},
             success:function(resp) {
                 var arr = resp.split('#');
-                $("#getPrice").html("Rs. "+ arr[0]);
+                var arr1 = arr[0].split('-');
+
+                $("#getPrice").html("Rs "+arr1[0]+"<br><h2>USD "+arr1[1]+"<br>GBP "+arr1[2]+"<br>EUR "+arr1[3]+"</h2>");
                 $("#price").val(arr[0]);
 
                 //Send the updated price based on size of the product

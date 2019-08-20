@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <?php use App\Product; ?>
+
     <section>
         <div class="container">
             <div class="row">
@@ -70,7 +72,15 @@
 
                                 <img src="images/product-details/rating.png" alt="" />
                                 <span>
-									<span id="getPrice">Rs. {{$productDetails->price}}</span>
+                                    <?php $getCurrencyRates = Product::getCurrencyRates($productDetails->price); ?>
+									<span id="getPrice">Rs. {{$productDetails->price}}
+                                        <br>
+                                          <h2>USD {{$getCurrencyRates['USD_Rate']}}</h2>
+                                        <h2>GBP {{$getCurrencyRates['GBP_Rate']}}</h2>
+                                          <h2>EURO {{$getCurrencyRates['EUR_Rate']}}</h2>
+
+                                    </span>
+
 									<label>Quantity:</label>
 									<input type="text" value="1" name="quantity"/>
 									@if($total_stock > 0)
