@@ -68,6 +68,16 @@ class ProductsController extends Controller
                 }
             }
 
+            // Uploading Video
+            if($request->hasFile('video')){
+                $video_tmp = Input::file('video');
+                $video_name = $video_tmp->getClientOriginalName();
+                $video_path = 'videos/';
+                $video_tmp->move($video_path, $video_name);
+                $product->video = $video_name;
+            }
+
+
             if(empty($data['status'])){
                 $status = 0;
             } else {
@@ -130,6 +140,21 @@ class ProductsController extends Controller
                 $filename = $data['current_image'];
             }
 
+
+            // Uploading Video
+            if($request->hasFile('video')){
+                $video_tmp = Input::file('video');
+                $video_name = $video_tmp->getClientOriginalName();
+                $video_path = 'videos/';
+                $video_tmp->move($video_path, $video_name);
+                $videoName = $video_name;
+            } else if(!empty($data['current_video'])){
+                $videoName = $data['current_video'];
+            } else {
+                $videoName = '';
+            }
+
+
             if(empty($data['description'])){
                 $data['description'] = "";
             }
@@ -149,7 +174,7 @@ class ProductsController extends Controller
             } else {
                 $feature = 1;
             }
-            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'status' => $status, 'feature_item' => $feature,  'price' => $data['price'], 'image' => $filename ]);
+            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'status' => $status, 'feature_item' => $feature,  'price' => $data['price'], 'image' => $filename , 'video' => $videoName]);
             return redirect()->back()->with('flash_message_success', 'Product Updated Successfully');
 
         }
