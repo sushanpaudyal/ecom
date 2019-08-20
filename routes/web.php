@@ -94,6 +94,7 @@ Route::group(['middleware' => ['adminlogin']], function (){
     Route::get('/admin/view-products', 'ProductsController@viewProducts')->name('viewProducts');
     Route::get('/admin/delete-product-image/{id}', 'ProductsController@deleteProductImage')->name('deleteProductImage');
     Route::get('/admin/delete-product/{id}', 'ProductsController@deleteProduct')->name('deleteProduct');
+    Route::get('/admin/delete-product-video/{id}', 'ProductsController@deleteProductVideo')->name('deleteProductVideo');
 
     // Product Attributes
     Route::match(['get', 'post'], '/admin/add-attributes/{id}', 'ProductsController@addAttributes')->name('addAttributes');

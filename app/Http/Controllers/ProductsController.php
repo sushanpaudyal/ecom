@@ -225,6 +225,20 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Product Image Deleted Successfully');
     }
 
+    public function deleteProductVideo($id){
+        $productVideo = Product::select('video')->where('id', $id)->first();
+        $video_path = 'videos/';
+
+        if(file_exists($video_path.$productVideo->video)){
+            unlink($video_path.$productVideo->video);
+        }
+
+        Product::where('id', $id)->update(['video' => '']);
+        return redirect()->back()->with('flash_message_success', 'Product Video Deleted Successfully');
+
+
+    }
+
     public function deleteProduct($id){
         Product::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');

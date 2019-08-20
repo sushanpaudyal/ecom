@@ -104,6 +104,10 @@
                                         <input type="file" name="video" id="video">
                                         @if(!empty($productDetails->video))
                                             <input type="hidden" name="current_video" value="{{$productDetails->video}}">
+                                            <a href="{{asset('videos/'.$productDetails->video)}}" style="margin-left: 10px" target="_blank">
+                                                VIEW
+                                            </a> |
+                                            <a href="{{route('deleteProductVideo', $productDetails->id)}}" class="btn btn-danger">Delete Video</a>
                                             @endif
                                     </div>
                                 </div>

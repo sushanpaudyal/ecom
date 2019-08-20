@@ -100,6 +100,9 @@
                                 <li><a href="#description" data-toggle="tab">Description</a></li>
                                 <li><a href="#care" data-toggle="tab">Materials &amp; Care</a></li>
                                 <li><a href="#delivery" data-toggle="tab">Delivery Option</a></li>
+                                @if(!empty($productDetails->video))
+                                <li><a href="#video" data-toggle="tab">Product Video</a></li>
+                                    @endif
 
                             </ul>
                         </div>
@@ -123,6 +126,18 @@
                                         Cash on Delivery</p> 
                                 </div> 
                             </div>
+
+
+                            @if(!empty($productDetails->video))
+                                <div class="tab-pane fade" id="video" >
+                                    <div class="col-sm-12">
+                                        <video width="320" height="200" controls>
+                                            <source src="{{asset('videos/'.$productDetails->video)}}" type="video/mp4">
+                                            YOUR BROUSWER DOES NOT SUPPORT VIDEO TAG.
+                                        </video>
+                                    </div>
+                                </div>
+                                @endif
 
                         </div>
                     </div><!--/category-tab-->
