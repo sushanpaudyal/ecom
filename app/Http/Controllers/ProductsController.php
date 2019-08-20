@@ -804,5 +804,10 @@ class ProductsController extends Controller
         }
     }
 
+    public function filter(Request $request){
+        $data = $request->all();
+        dd($data);
+    }
+
 }
 
