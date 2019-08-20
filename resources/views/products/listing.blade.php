@@ -117,10 +117,12 @@
                         @endforeach
                     </div><!--features_items-->
 
+                    @if(empty($search_product))
+                        <div class="text-center">
+                            {{$productsAll->links()}}
+                        </div>
+                        @endif
 
-                    <div class="text-center">
-                        {{$productsAll->links()}}
-                    </div>
 
 
                 </div>
