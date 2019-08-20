@@ -1,6 +1,6 @@
 @extends('layouts.frontLayout.front_design')
 @section('content')
-
+<?php use App\Product; ?>
     @if(Session::has('flash_message_error'))
         <div class="alert alert-error alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -157,8 +157,15 @@
                                 </tr>
 
                                 <tr>
+                                    <?php
+                                    $total_amount = $total_amount - Session::get('CouponAmount');
+                                    $getCurrencyRates = Product::getCurrencyRates($total_amount); ?>
                                     <td>Grand Total</td>
-                                    <td><span> Rs.
+                                    <td><span data-toggle="tooltip" data-html="true" title="
+								USD {{ $getCurrencyRates['USD_Rate'] }}<br>
+								GBP {{ $getCurrencyRates['GBP_Rate'] }}<br>
+								EUR {{ $getCurrencyRates['EUR_Rate'] }}
+                                                "> Rs.
                                             <?php echo $grand_total = $total_amount - Session::get('CouponAmount'); ?>
                                         </span></td>
                                 </tr>

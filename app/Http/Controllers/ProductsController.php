@@ -342,7 +342,6 @@ class ProductsController extends Controller
         echo $proAttr->price."-".$getCurrencyRates['USD_Rate']."-".$getCurrencyRates['GBP_Rate']."-".$getCurrencyRates['EUR_Rate'];
         echo "#";
         echo $proAttr->stock;
-
     }
 
     public function addImages(Request $request, $id = null){
