@@ -60,6 +60,13 @@
             </ul>
         </li>
 
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Currency</span> </a>
+            <ul <?php if(preg_match("/currencies/i", $url)) { echo 'style="display:block;"';} ?>>
+                <li <?php if(preg_match("/add-currency/i", $url)) { echo 'class="active"';} ?>><a href="{{route('add-currency')}}">Add Currency</a></li>
+                <li <?php if(preg_match("/view-currencies/i", $url)) { echo 'class="active"';} ?>><a href="">View Currency</a></li>
+            </ul>
+        </li>
+
     </ul>
 </div>
 <!--sidebar-menu-->

@@ -131,6 +131,9 @@ Route::group(['middleware' => ['adminlogin']], function (){
     Route::match(['get', 'post'], '/admin/edit-cms-page/{id}', 'CmsController@editCmsPage')->name('edit-cms-page');
     Route::get('/admin/delete-cms-page/{id}', 'CmsController@deleteCmsPage')->name('deleteCmsPage');
 
+    // Currency
+    Route::match(['get', 'post'], '/admin/add-currency', 'CurrencyController@addCurrency')->name('add-currency');
+
 
 });
 

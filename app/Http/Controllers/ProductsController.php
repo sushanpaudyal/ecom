@@ -235,8 +235,6 @@ class ProductsController extends Controller
 
         Product::where('id', $id)->update(['video' => '']);
         return redirect()->back()->with('flash_message_success', 'Product Video Deleted Successfully');
-
-
     }
 
     public function deleteProduct($id){
