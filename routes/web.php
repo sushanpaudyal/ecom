@@ -18,7 +18,8 @@ Route::get('/', 'IndexController@index')->name('indexpage');
 Route::get('/products/{url}', 'ProductsController@products')->name('products');
 
 //Products Filter Page
-Route::match(['get', 'post'], '/products-filter', 'ProductsController@filter');
+Route::match(['get', 'post'], '/products-filter','ProductsController@filter')->name('filter');
+
 
 // Products Details Page
 Route::get('/product/{id}', 'ProductsController@product')->name('product');

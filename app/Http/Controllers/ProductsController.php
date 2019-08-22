@@ -18,6 +18,7 @@ use Image;
 use DB;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 class ProductsController extends Controller
@@ -307,13 +308,24 @@ class ProductsController extends Controller
             foreach ($subCategories as $subcat) {
                 $cat_ids[] = $subcat->id;
             }
-            $productsAll = Product::whereIn('category_id', $cat_ids)->where('status', '1')->paginate(3);
+            $productsAll = Product::whereIn('category_id', $cat_ids)->where('status', '1');
             $productsAll = json_decode(json_encode($productsAll));
         } else {
             // if url is subcategory url 
-            $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status', '1')->paginate(3);
+            $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status', '1');
         }
-        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories'));
+
+
+        if(!empty($_GET['color'])){
+            $colorArray = explode("-", $_GET['color']);
+            $productsAll = $productsAll->whereIn('product_color', $colorArray);
+        }
+
+        $productsAll = $productsAll->paginate(6);
+
+
+
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url'));
     }
 
     public function product($id){
@@ -804,10 +816,25 @@ class ProductsController extends Controller
         }
     }
 
+
     public function filter(Request $request){
         $data = $request->all();
-        dd($data);
+
+        $colorUrl = "";
+        if(!empty($data['colorFilter'])){
+            foreach($data['colorFilter'] as $color){
+                if(empty($colorUrl)){
+                    $colorUrl = "&color=".$color;
+                } else {
+                    $colorUrl .= "-".$color;
+                }
+            }
+        }
+        $finalUrl = "products/".$data['url']."?".$colorUrl;
+        return redirect::to($finalUrl);
     }
+
+
 
 }
 

@@ -2,15 +2,15 @@
   use App\Product;
 ?>
 
-<form action="{{url('/products-filter')}}" method="post">
-    @csrf
-    <input type="hidden" name="url" value="">
 
-<div class="left-sidebar">
+<form action="{{url('/products-filter')}}" method="post">
+    {{csrf_field()}}
+    <input type="hidden" name="url" value="{{$url}}">
+    <div class="left-sidebar">
     <h2>Category</h2>
     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+        @foreach($categories as $cat)
         <div class="panel panel-default">
-            @foreach($categories as $cat)
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#{{$cat->id}}" href="#{{$cat->id}}">
@@ -29,42 +29,48 @@
                         </ul>
                     </div>
                 </div>
-            @endforeach
         </div>
+        @endforeach
+
     </div><!--/category-products-->
 
        <h2>Colors</h2>
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <input type="checkbox" name="colorFilter[]" onchange="javascript:this.form.submit();" id="Blue" value="Blue"> &nbsp; <span class="products-color">Blue</span>
-                </h4>
-            </div>
-        </div>
-        <div class="panel panel-default">
+        <div class="panel-group">
+            @if(!empty($_GET['color']))
+                <?php $colorArray = explode('-', $_GET['color']);
+//                   echo "<pre>"; print_r($colorArray); die;
+
+                ?>
+                @endif
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                       <input type="checkbox" name="colorFilter[]" onchange="javascript:this.form.submit();" id="Black" value="Black"> &nbsp; <span class="products-color">Black</span>
+                        <input name="colorFilter[]" onchange="javascript:this.form.submit();" id="Blue" value="Blue" type="checkbox" @if(!empty($colorArray) && in_array("Blue", $colorArray)) checked="" @endif>&nbsp; &nbsp; <span class="products-color">Blue</span>
                     </h4>
                 </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <input type="checkbox" name="colorFilter[]" onchange="javascript:this.form.submit();" id="Red" value="Red"> &nbsp; <span class="products-color">Red</span>
-                </h4>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <input type="checkbox" name="colorFilter[]" onchange="javascript:this.form.submit();" id="Green" value="Green"> &nbsp; <span class="products-color">Green</span>
-                </h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <input name="colorFilter[]" onchange="javascript:this.form.submit();" id="Black" value="Black" type="checkbox" @if(!empty($colorArray) && in_array("Black", $colorArray)) checked="" @endif>&nbsp; &nbsp; <span class="products-color">Black</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <input name="colorFilter[]" onchange="javascript:this.form.submit();" id="Red" value="Red" type="checkbox" @if(!empty($colorArray) && in_array("Red", $colorArray)) checked="" @endif>&nbsp; &nbsp; <span class="products-color">Red</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <input name="colorFilter[]" onchange="javascript:this.form.submit();" id="Green" value="Green" type="checkbox" @if(!empty($colorArray) && in_array("Green", $colorArray)) checked="" @endif>&nbsp; &nbsp; <span class=products-color>Green</span>
+                    </h4>
+                </div>
             </div>
         </div>
 
-    </div>
 </div>
-
 </form>
