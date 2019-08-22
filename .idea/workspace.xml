@@ -4,7 +4,6 @@
     <list default="true" id="2f192b34-9605-4b6b-8341-121afe18486a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="ProductsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="327" column="47" lean-forward="false" selection-start-line="327" selection-start-column="47" selection-end-line="327" selection-end-column="47" />
+            <state relative-caret-position="218">
+              <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
               <folding>
                 <element signature="e#457#3960#0#PHP" expanded="false" />
                 <element signature="e#3966#4315#0#PHP" expanded="false" />
@@ -33,9 +32,9 @@
                 <element signature="e#9637#11158#0#PHP" expanded="false" />
                 <element signature="e#11164#11702#0#PHP" expanded="false" />
                 <element signature="e#11708#11921#0#PHP" expanded="false" />
-                <marker date="1566459539041" expanded="true" signature="15202:15259" ph="..." />
-                <marker date="1566459539041" expanded="true" signature="24548:24667" ph="..." />
-                <marker date="1566459539041" expanded="true" signature="34584:34646" ph="..." />
+                <marker date="1566459803698" expanded="true" signature="15300:15357" ph="..." />
+                <marker date="1566459803698" expanded="true" signature="24646:24765" ph="..." />
+                <marker date="1566459803698" expanded="true" signature="34682:34744" ph="..." />
               </folding>
             </state>
           </provider>
@@ -373,12 +372,12 @@
       <workItem from="1566291445324" duration="5000000" />
       <workItem from="1566318378895" duration="5823000" />
       <workItem from="1566369444883" duration="4652000" />
-      <workItem from="1566452198573" duration="4276000" />
+      <workItem from="1566452198573" duration="4538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110927000" />
+    <option name="totallyTimeSpent" value="111189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -819,8 +818,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="327" column="47" lean-forward="false" selection-start-line="327" selection-start-column="47" selection-end-line="327" selection-end-column="47" />
+        <state relative-caret-position="218">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
           <folding>
             <element signature="e#457#3960#0#PHP" expanded="false" />
             <element signature="e#3966#4315#0#PHP" expanded="false" />
@@ -831,9 +830,9 @@
             <element signature="e#9637#11158#0#PHP" expanded="false" />
             <element signature="e#11164#11702#0#PHP" expanded="false" />
             <element signature="e#11708#11921#0#PHP" expanded="false" />
-            <marker date="1566459539041" expanded="true" signature="15202:15259" ph="..." />
-            <marker date="1566459539041" expanded="true" signature="24548:24667" ph="..." />
-            <marker date="1566459539041" expanded="true" signature="34584:34646" ph="..." />
+            <marker date="1566459803698" expanded="true" signature="15300:15357" ph="..." />
+            <marker date="1566459803698" expanded="true" signature="24646:24765" ph="..." />
+            <marker date="1566459803698" expanded="true" signature="34682:34744" ph="..." />
           </folding>
         </state>
       </provider>
