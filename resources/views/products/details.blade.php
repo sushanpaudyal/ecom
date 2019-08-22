@@ -60,6 +60,10 @@
                                 <img src="{{asset('images/backend_images/product-details/new.jpg')}}" class="newarrival" alt="" />
                                 <h2>{{$productDetails->product_name}}</h2>
                                 <p>Product Code: {{$productDetails->product_code}}</p>
+                                @if(!empty($productDetails->sleeve))
+                                    <p>Sleeve : {{$productDetails->sleeve}}</p>
+
+                                @endif
 
                                 <p>
                                     <select name="size" style="width: 150px;" id="selSize">

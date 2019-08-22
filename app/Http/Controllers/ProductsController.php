@@ -339,15 +339,23 @@ class ProductsController extends Controller
             $productsAll = $productsAll->whereIn('product_color', $colorArray);
         }
 
+        if(!empty($_GET['sleeve'])){
+            $sleeveArray = explode("-", $_GET['sleeve']);
+            $productsAll = $productsAll->whereIn('sleeve', $sleeveArray);
+        }
+
 //        $colorArray = array('Black', 'Blue', 'Brown', 'Gold','Green', 'Orange', 'Pink', 'Purple', 'Red', 'Yellow', 'Silver', 'White');
         $colorArray = Product::select('product_color')->groupBy('product_color')->get();
         $colorArray = array_flatten(json_decode(json_encode($colorArray), true));
+
+        $sleeveArray = Product::select('sleeve')->where('sleeve', '!=', '')->groupBy('sleeve')->get();
+        $sleeveArray = array_flatten(json_decode(json_encode($sleeveArray), true));
 
         $productsAll = $productsAll->paginate(6);
 
 
 
-        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray'));
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray', 'sleeveArray'));
     }
 
     public function product($id){
@@ -852,7 +860,19 @@ class ProductsController extends Controller
                 }
             }
         }
-        $finalUrl = "products/".$data['url']."?".$colorUrl;
+
+        $sleeveUrl = "";
+        if(!empty($data['sleeveFilter'])){
+            foreach($data['sleeveFilter'] as $sleeve){
+                if(empty($sleeveUrl)){
+                    $sleeveUrl = "&sleeve=".$sleeve;
+                } else {
+                    $sleeveUrl .= "-".$sleeve;
+                }
+            }
+        }
+
+        $finalUrl = "products/".$data['url']."?".$colorUrl.$sleeveUrl;
         return redirect::to($finalUrl);
     }
 
