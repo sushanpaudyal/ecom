@@ -321,11 +321,15 @@ class ProductsController extends Controller
             $productsAll = $productsAll->whereIn('product_color', $colorArray);
         }
 
+//        $colorArray = array('Black', 'Blue', 'Brown', 'Gold','Green', 'Orange', 'Pink', 'Purple', 'Red', 'Yellow', 'Silver', 'White');
+        $colorArray = Product::select('product_color')->groupBy('product_color')->get();
+        $colorArray = array_flatten(json_decode(json_encode($colorArray), true));
+
         $productsAll = $productsAll->paginate(6);
 
 
 
-        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url'));
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray'));
     }
 
     public function product($id){
