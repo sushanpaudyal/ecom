@@ -320,6 +320,7 @@ class ProductsController extends Controller
             abort(404);
         }
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+
         $categoryDetails = Category::where(['url'=>$url])->first();
         if($categoryDetails->parent_id==0){
             $subCategories = Category::where(['parent_id'=>$categoryDetails->id])->get();
@@ -332,17 +333,25 @@ class ProductsController extends Controller
             $productsAll = Product::where(['products.category_id'=>$categoryDetails->id])->where('products.status','1')->orderBy('products.id','Desc');
             $mainCategory = Category::where('id',$categoryDetails->parent_id)->first();
         }
-
-
         if(!empty($_GET['color'])){
-            $colorArray = explode("-", $_GET['color']);
-            $productsAll = $productsAll->whereIn('product_color', $colorArray);
+            $colorArray = explode('-',$_GET['color']);
+            $productsAll = $productsAll->whereIn('products.product_color',$colorArray);
+        }
+        if(!empty($_GET['sleeve'])){
+            $sleeveArray = explode('-',$_GET['sleeve']);
+            $productsAll = $productsAll->whereIn('products.sleeve',$sleeveArray);
         }
 
-        if(!empty($_GET['sleeve'])){
-            $sleeveArray = explode("-", $_GET['sleeve']);
-            $productsAll = $productsAll->whereIn('sleeve', $sleeveArray);
+
+        if(!empty($_GET['size'])){
+            $sizeArray = explode('-',$_GET['size']);
+            $productsAll = $productsAll->join('products_attributes','products_attributes.product_id','=','products.id')
+                ->select('products.*','products_attributes.product_id','products_attributes.size')
+                ->groupBy('products_attributes.product_id')
+                ->whereIn('products_attributes.size',$sizeArray);
         }
+
+
 
 //        $colorArray = array('Black', 'Blue', 'Brown', 'Gold','Green', 'Orange', 'Pink', 'Purple', 'Red', 'Yellow', 'Silver', 'White');
         $colorArray = Product::select('product_color')->groupBy('product_color')->get();
@@ -351,11 +360,14 @@ class ProductsController extends Controller
         $sleeveArray = Product::select('sleeve')->where('sleeve', '!=', '')->groupBy('sleeve')->get();
         $sleeveArray = array_flatten(json_decode(json_encode($sleeveArray), true));
 
+        $sizesArray = ProductsAttribute::select('size')->groupBy('size')->get();
+        $sizesArray = array_flatten(json_decode(json_encode($sizesArray), true));
+
         $productsAll = $productsAll->paginate(6);
 
 
 
-        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray', 'sleeveArray'));
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray', 'sleeveArray', 'sizesArray'));
     }
 
     public function product($id){
@@ -872,7 +884,18 @@ class ProductsController extends Controller
             }
         }
 
-        $finalUrl = "products/".$data['url']."?".$colorUrl.$sleeveUrl;
+        $sizeUrl = "";
+        if(!empty($data['sizeFilter'])){
+            foreach($data['sizeFilter'] as $size){
+                if(empty($sizeUrl)){
+                    $sizeUrl = "&size=".$size;
+                } else {
+                    $sizeUrl .= "-".$size;
+                }
+            }
+        }
+
+        $finalUrl = "products/".$data['url']."?".$colorUrl.$sleeveUrl.$sizeUrl;
         return redirect::to($finalUrl);
     }
 
