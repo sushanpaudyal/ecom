@@ -66,6 +66,18 @@
                                 </div>
 
                                 <div class="control-group">
+                                    <label class="control-label">Sleeve</label>
+                                    <div class="controls">
+                                        <select name="sleeve" class="form-control" style="width: 220px">
+                                            <option > Select Sleeve</option>
+                                            @foreach($sleeveArray as $sleeve)
+                                                <option value="{{$sleeve}}" @if($productDetails->sleeve == $sleeve) selected @endif>{{$sleeve}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
                                     <label class="control-label">Product Code</label>
                                     <div class="controls">
                                         <input type="text" name="product_code" id="product_code" value="{{$productDetails->product_code}}">

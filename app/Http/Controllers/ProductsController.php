@@ -84,6 +84,16 @@ class ProductsController extends Controller
             } else {
                 $status = 1;
             }
+
+
+            if(empty($data['sleeve'])){
+                $product->sleeve = "";
+            } else {
+                $product->sleeve = $data['sleeve'];
+
+            }
+
+
             $product->status = $status;
 
             if(empty($data['feature_item'])){
@@ -106,7 +116,9 @@ class ProductsController extends Controller
                 $categories_dropdown .= "<option value='".$sub_cat->id."'>  &nbsp; &nbsp; --- ".$sub_cat->name."  </option>";
             }
         }
-        return view ('admin.products.add-product', compact('categories_dropdown'));
+
+        $sleeveArray = array('Full Sleeve', 'Half Sleeve', 'Short Sleeve', 'Sleeveless');
+        return view ('admin.products.add-product', compact('categories_dropdown', 'sleeveArray'));
     }
 
     public function viewProducts(){
@@ -170,12 +182,18 @@ class ProductsController extends Controller
                 $status = 1;
             }
 
+            if(empty($data['sleeve'])){
+                $sleeve = "";
+            } else {
+                $sleeve = $data['sleeve'];
+            }
+
             if(empty($data['feature_item'])){
                 $feature = 0;
             } else {
                 $feature = 1;
             }
-            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'status' => $status, 'feature_item' => $feature,  'price' => $data['price'], 'image' => $filename , 'video' => $videoName]);
+            Product::where(['id' => $id])->update(['category_id' =>  $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['description'], 'care' =>$data['care'], 'status' => $status, 'feature_item' => $feature,  'price' => $data['price'], 'image' => $filename , 'video' => $videoName, 'sleeve' => $sleeve]);
             return redirect()->back()->with('flash_message_success', 'Product Updated Successfully');
 
         }
@@ -200,7 +218,9 @@ class ProductsController extends Controller
                 $categories_dropdown .= "<option value='".$sub_cat->id."' ".$selected.">  &nbsp; &nbsp; --- ".$sub_cat->name."  </option>";
             }
         }
-        return view ('admin.products.edit_product', compact('productDetails', 'categories_dropdown'));
+        $sleeveArray = array('Full Sleeve', 'Half Sleeve', 'Short Sleeve', 'Sleeveless');
+
+        return view ('admin.products.edit_product', compact('productDetails', 'categories_dropdown', 'sleeveArray'));
     }
 
     public function deleteProductImage($id = null){
