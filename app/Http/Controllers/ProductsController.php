@@ -716,6 +716,13 @@ class ProductsController extends Controller
                     return redirect('/cart')->with('flash_message_error', 'Disabled Product ! Removed from cart.');
                 }
 
+                $getCategoryId = Product::select('category_id')->where('id', $cart->product_id)->first();
+                $category_status = Product::getCategoryStatus($getCategoryId->category_id);
+                if($category_status == 0){
+                    Product::deleteCartProduct($cart->product_id, $user_email);
+                    return redirect('/cart')->with('flash_message_error', 'Disabled Product Category ! Removed from cart.');
+                }
+
 
             }
 
