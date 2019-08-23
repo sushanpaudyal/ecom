@@ -329,9 +329,12 @@ class ProductsController extends Controller
                 $cat_ids[] = $subcat->id;
             }
             $productsAll = Product::whereIn('products.category_id', $cat_ids)->where('products.status','1')->orderBy('products.id','Desc');
+            $breadcrumb = "<a href='/'> Home </a> / <a href='".$categoryDetails->url."'>".$categoryDetails->name."</a>";
+
         }else{
             $productsAll = Product::where(['products.category_id'=>$categoryDetails->id])->where('products.status','1')->orderBy('products.id','Desc');
             $mainCategory = Category::where('id',$categoryDetails->parent_id)->first();
+            $breadcrumb = "<a href='/'> Home </a> / <a href='".$mainCategory->url."'>".$mainCategory->name."</a> / <a href='".$categoryDetails->url."'>".$categoryDetails->name."</a>";
         }
         if(!empty($_GET['color'])){
             $colorArray = explode('-',$_GET['color']);
@@ -367,7 +370,7 @@ class ProductsController extends Controller
 
 
 
-        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray', 'sleeveArray', 'sizesArray'));
+        return view('products.listing')->with(compact('categoryDetails', 'productsAll', 'categories', 'url', 'colorArray', 'sleeveArray', 'sizesArray', 'breadcrumb'));
     }
 
     public function product($id){

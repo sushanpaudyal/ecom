@@ -88,6 +88,10 @@
                                 @endif
                             ({{count($productsAll)}})
                             </h2>
+                        <div align="left">
+                            <?php echo $breadcrumb; ?>
+                        </div>
+                        <div>&nbsp;</div>
                         @foreach($productsAll as $product)
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
