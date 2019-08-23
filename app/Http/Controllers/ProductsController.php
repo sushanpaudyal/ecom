@@ -685,13 +685,15 @@ class ProductsController extends Controller
 
         $userCart = DB::table('carts')->where(['user_email' => $user_email])->get();
 
+        $total_weight = 0;
         foreach($userCart as $key => $product){
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
+            $total_weight = $total_weight + $productDetails->weight;
         }
 
         // Fetch Shipping Charges
-        $shippingCharges = Product::getShippingCharges($shippingDetails->country);
+        $shippingCharges = Product::getShippingCharges($total_weight, $shippingDetails->country);
 
 
         return view ('products.order_review', compact('userDetails', 'shippingDetails' , 'userCart', 'shippingCharges'));
