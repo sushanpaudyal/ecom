@@ -677,7 +677,11 @@ class ProductsController extends Controller
             $userCart[$key]->image = $productDetails->image;
         }
 
-        return view ('products.order_review', compact('userDetails', 'shippingDetails' , 'userCart'));
+        // Fetch Shipping Charges
+        $shippingCharges = Product::getShippingCharges($shippingDetails->country);
+
+
+        return view ('products.order_review', compact('userDetails', 'shippingDetails' , 'userCart', 'shippingCharges'));
     }
 
 
@@ -755,6 +759,8 @@ class ProductsController extends Controller
                 $data['shipping_charges'] = 0;
             }
 
+            $shippingCharges = Product::getShippingCharges($shippingDetails->country);
+
 
             $order = new Order;
             $order->user_id = $user_id;
@@ -771,7 +777,7 @@ class ProductsController extends Controller
             $order->coupon_amount = $coupon_amount;
             $order->order_status = "New";
             $order->payment_method = $data['payment_method'];
-            $order->shipping_charges = $data['shipping_charges'];
+            $order->shipping_charges = $shippingCharges;
             $order->grand_total = $data['grand_total'];
             $order->save();
 

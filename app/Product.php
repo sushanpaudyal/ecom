@@ -70,4 +70,10 @@ class Product extends Model
         return $getCategoryStatus->status;
     }
 
+    public static function getShippingCharges($country){
+        $shippingDetails = ShippingCharges::where('country', $country)->first();
+        $shipping_charges = $shippingDetails->shipping_charges;
+        return $shipping_charges;
+    }
+
 }

@@ -144,7 +144,7 @@
 
                                 <tr class="shipping-cost">
                                     <td>Shipping Cost</td>
-                                    <td>Free</td>
+                                    <td> Rs. {{$shippingCharges}}</td></td>
                                 </tr>
 
                                 <tr class="shipping-cost">
@@ -158,7 +158,7 @@
 
                                 <tr>
                                     <?php
-                                    $total_amount = $total_amount - Session::get('CouponAmount');
+                                    $total_amount = $total_amount + $shippingCharges - Session::get('CouponAmount');
                                     $getCurrencyRates = Product::getCurrencyRates($total_amount); ?>
                                     <td>Grand Total</td>
                                     <td><span data-toggle="tooltip" data-html="true" title="
