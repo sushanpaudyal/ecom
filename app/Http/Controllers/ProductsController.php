@@ -690,6 +690,15 @@ class ProductsController extends Controller
             // Preventing Sold out products to order
             $userCart = DB::table('carts')->where('user_email', $user_email)->get();
             foreach ($userCart as $cart){
+
+                $getAttributeCount = Product::getAttributeCount($cart->product_id, $cart->size);
+                if($getAttributeCount == 0){
+
+                    Product::deleteCartProduct($cart->product_id, $user_email);
+
+                    return redirect('/cart')->with('flash_message_error', 'Product Attribute is not Available ! Removed from cart.');
+                }
+
                 $product_stock = Product::getProductStock($cart->product_id, $cart->size);
                 if($product_stock == 0){
 
@@ -706,6 +715,8 @@ class ProductsController extends Controller
                     Product::deleteCartProduct($cart->product_id, $user_email);
                     return redirect('/cart')->with('flash_message_error', 'Disabled Product ! Removed from cart.');
                 }
+
+
             }
 
 

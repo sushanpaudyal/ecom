@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f192b34-9605-4b6b-8341-121afe18486a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" />
       <change beforePath="$PROJECT_DIR$/app/Product.php" afterPath="$PROJECT_DIR$/app/Product.php" />
     </list>
@@ -20,8 +21,8 @@
       <file leaf-file-name="ProductsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="706" column="82" lean-forward="false" selection-start-line="706" selection-start-column="82" selection-end-line="706" selection-end-column="82" />
+            <state relative-caret-position="280">
+              <caret line="701" column="90" lean-forward="true" selection-start-line="701" selection-start-column="90" selection-end-line="701" selection-end-column="90" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
                 <element signature="e#471#4251#0#PHP" expanded="false" />
@@ -45,10 +46,10 @@
                 <element signature="e#23601#25822#0#PHP" expanded="false" />
                 <element signature="e#25828#29138#0#PHP" expanded="false" />
                 <element signature="e#29145#29796#0#PHP" expanded="false" />
-                <element signature="e#34955#35142#0#PHP" expanded="false" />
-                <element signature="e#35149#35364#0#PHP" expanded="false" />
-                <element signature="e#35370#35619#0#PHP" expanded="false" />
-                <marker date="1566581874873" expanded="true" signature="38110:38172" ph="..." />
+                <element signature="e#35335#35522#0#PHP" expanded="false" />
+                <element signature="e#35529#35744#0#PHP" expanded="false" />
+                <element signature="e#35750#35999#0#PHP" expanded="false" />
+                <marker date="1566582334358" expanded="true" signature="38490:38552" ph="..." />
               </folding>
             </state>
           </provider>
@@ -57,8 +58,8 @@
       <file leaf-file-name="Product.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state relative-caret-position="346">
+              <caret line="58" column="89" lean-forward="true" selection-start-line="58" selection-start-column="89" selection-end-line="58" selection-end-column="89" />
               <folding>
                 <element signature="e#23#62#0#PHP" expanded="true" />
               </folding>
@@ -390,12 +391,12 @@
       <workItem from="1566318378895" duration="5823000" />
       <workItem from="1566369444883" duration="4652000" />
       <workItem from="1566452198573" duration="8928000" />
-      <workItem from="1566578107106" duration="3212000" />
+      <workItem from="1566578107106" duration="3747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118791000" />
+    <option name="totallyTimeSpent" value="119326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -827,8 +828,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        <state relative-caret-position="346">
+          <caret line="58" column="89" lean-forward="true" selection-start-line="58" selection-start-column="89" selection-end-line="58" selection-end-column="89" />
           <folding>
             <element signature="e#23#62#0#PHP" expanded="true" />
           </folding>
@@ -837,8 +838,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="706" column="82" lean-forward="false" selection-start-line="706" selection-start-column="82" selection-end-line="706" selection-end-column="82" />
+        <state relative-caret-position="280">
+          <caret line="701" column="90" lean-forward="true" selection-start-line="701" selection-start-column="90" selection-end-line="701" selection-end-column="90" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
             <element signature="e#471#4251#0#PHP" expanded="false" />
@@ -862,10 +863,10 @@
             <element signature="e#23601#25822#0#PHP" expanded="false" />
             <element signature="e#25828#29138#0#PHP" expanded="false" />
             <element signature="e#29145#29796#0#PHP" expanded="false" />
-            <element signature="e#34955#35142#0#PHP" expanded="false" />
-            <element signature="e#35149#35364#0#PHP" expanded="false" />
-            <element signature="e#35370#35619#0#PHP" expanded="false" />
-            <marker date="1566581874873" expanded="true" signature="38110:38172" ph="..." />
+            <element signature="e#35335#35522#0#PHP" expanded="false" />
+            <element signature="e#35529#35744#0#PHP" expanded="false" />
+            <element signature="e#35750#35999#0#PHP" expanded="false" />
+            <marker date="1566582334358" expanded="true" signature="38490:38552" ph="..." />
           </folding>
         </state>
       </provider>
