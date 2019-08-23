@@ -142,6 +142,7 @@ Route::group(['middleware' => ['adminlogin']], function (){
 
     // Shipping Charges
     Route::get('/admin/view-shipping', 'ShippingController@viewShipping')->name('viewShipping');
+    Route::match(['get', 'post'], '/admin/edit-shipping/{id}', 'ShippingController@editShipping')->name('editShipping');
 
 });
 

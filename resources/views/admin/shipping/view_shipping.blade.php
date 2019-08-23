@@ -48,7 +48,7 @@
                                         <td>{{$shipping->shipping_charges}}</td>
                                         <td>{{$shipping->updated_at}}</td>
                                         <td>
-                                            Edit
+                                            <a href="{{route('editShipping', $shipping->id)}}" class="btn btn-primary btn-mini">Edit</a>
                                         </td>
                                     </tr>
                                     @endforeach
