@@ -747,6 +747,12 @@ class ProductsController extends Controller
                 $cartPro->price = $pro->price;
                 $cartPro->product_qty = $pro->quantity;
                 $cartPro->save();
+
+                // Reduce Stock At order Placement
+                $getProductStock = ProductsAttribute::where('sku', $pro->product_code)->first();
+                $getProductStock->stock;
+                $newStock = $getProductStock->stock - $pro->quantity;
+                ProductsAttribute::where('sku', $pro->product_code)->update(['stock' => $newStock]);
             }
 
             Session::put('order_id', $order_id);
