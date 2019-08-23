@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Coupon;
 use App\DeliveryAddress;
@@ -685,6 +686,21 @@ class ProductsController extends Controller
             $data = $request->all();
             $user_id = Auth::user()->id;
             $user_email = Auth::user()->email;
+
+            // Preventing Sold out products to order
+            $userCart = DB::table('carts')->where('user_email', $user_email)->get();
+            foreach ($userCart as $cart){
+                $product_stock = Product::getProductStock($cart->product_id, $cart->size);
+                if($product_stock == 0){
+                    return redirect('/cart')->with('flash_message_error', 'Product is sold out ! Please Shop another item');
+                }
+                if($cart->quantity > $product_stock){
+                    return redirect('/cart')->with('flash_message_error', 'Reduce Product Stock and Try Again.');
+                }
+            }
+
+
+
             //Getting the shipping details of the user
             $shippingDetails = DeliveryAddress::where(['user_email' => $user_email])->first();
 
@@ -752,6 +768,9 @@ class ProductsController extends Controller
                 $getProductStock = ProductsAttribute::where('sku', $pro->product_code)->first();
                 $getProductStock->stock;
                 $newStock = $getProductStock->stock - $pro->quantity;
+                if($newStock < 0){
+                    $newStock = 0;
+                }
                 ProductsAttribute::where('sku', $pro->product_code)->update(['stock' => $newStock]);
             }
 
