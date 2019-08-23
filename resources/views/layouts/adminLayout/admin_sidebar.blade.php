@@ -67,6 +67,13 @@
             </ul>
         </li>
 
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Shipping Charges</span> </a>
+            <ul <?php if(preg_match("/shipping/i", $url)) { echo 'style="display:block;"';} ?>>
+                <li <?php if(preg_match("/view-shipping/i", $url)) { echo 'class="active"';} ?>><a href="{{route('viewShipping')}}">View Shipping</a></li>
+            </ul>
+        </li>
+
+
     </ul>
 </div>
 <!--sidebar-menu-->
