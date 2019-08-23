@@ -35,7 +35,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Country</th>
-                                    <th>Charges</th>
+                                    <th>0 to 500g</th>
+                                    <th>501 to 1000g</th>
+                                    <th>1001 to 2000g</th>
+                                    <th>2001 to 5000g</th>
                                     <th>Updated At</th>
                                     <th>Actions</th>
                                 </tr>
@@ -45,7 +48,10 @@
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
                                         <td>{{$shipping->country}}</td>
-                                        <td>{{$shipping->shipping_charges}}</td>
+                                        <td>{{$shipping->shipping_charges0_500g}}</td>
+                                        <td>{{$shipping->shipping_charges501_1000g}}</td>
+                                        <td>{{$shipping->shipping_charges1001_2000g}}</td>
+                                        <td>{{$shipping->shipping_charges2001_5000g}}</td>
                                         <td>{{$shipping->updated_at}}</td>
                                         <td>
                                             <a href="{{route('editShipping', $shipping->id)}}" class="btn btn-primary btn-mini">Edit</a>

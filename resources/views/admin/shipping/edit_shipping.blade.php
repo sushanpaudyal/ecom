@@ -38,9 +38,29 @@
 
 
                                 <div class="control-group">
-                                    <label class="control-label">Charges</label>
+                                    <label class="control-label">Charges (0-500g)</label>
                                     <div class="controls">
-                                        <input type="text" name="shipping_charges" id="shipping_charges" value="{{$shipping->shipping_charges}}">
+                                        <input type="text" name="shipping_charges0_500g" id="shipping_charges0_500g" value="{{$shipping->shipping_charges0_500g}}">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Charges (501-1000g)</label>
+                                    <div class="controls">
+                                        <input type="text" name="shipping_charges501_1000g" id="shipping_charges501_1000g" value="{{$shipping->shipping_charges501_1000g}}">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Charges (1001-2000g)</label>
+                                    <div class="controls">
+                                        <input type="text" name="shipping_charges1001_2000g" id="shipping_charges1001_2000g" value="{{$shipping->shipping_charges1001_2000g}}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Charges (2001-5000g)</label>
+                                    <div class="controls">
+                                        <input type="text" name="shipping_charges2001_5000g" id="shipping_charges2001_5000g" value="{{$shipping->shipping_charges2001_5000g}}">
                                     </div>
                                 </div>
 

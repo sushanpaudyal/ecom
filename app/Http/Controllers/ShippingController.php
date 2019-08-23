@@ -17,7 +17,11 @@ class ShippingController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             $shipping->country = $data['country'];
-            $shipping->shipping_charges = $data['shipping_charges'];
+            $shipping->shipping_charges0_500g = $data['shipping_charges0_500g'];
+            $shipping->shipping_charges501_1000g = $data['shipping_charges501_1000g'];
+            $shipping->shipping_charges1001_2000g = $data['shipping_charges1001_2000g'];
+            $shipping->shipping_charges2001_5000g = $data['shipping_charges2001_5000g'];
+
             $shipping->save();
             return redirect()->back()->with('flash_message_success', 'Shipping Charges Updated');
 
