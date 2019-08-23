@@ -88,6 +88,14 @@
                                 </div>
 
                                 <div class="control-group">
+                                    <label class="control-label">Product Weight</label>
+                                    <div class="controls">
+                                        <input type="text" name="weight" id="weight">
+                                        <span>in Grams</span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
                                     <label class="control-label">Price</label>
                                     <div class="controls">
                                         <input type="text" name="price" id="price">
