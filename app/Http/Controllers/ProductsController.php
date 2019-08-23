@@ -907,7 +907,9 @@ class ProductsController extends Controller
 
                 ;
             })->where('status', 1)->get();
-            return view ('products.listing', compact('categories', 'productsAll', 'search_product'));
+            $breadcrumb = "<a href='/'> Home </a> / " .$search_product."</a>";
+
+            return view ('products.listing', compact('categories', 'productsAll', 'search_product', 'breadcrumb'));
         }
     }
 
