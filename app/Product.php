@@ -51,4 +51,13 @@ class Product extends Model
         return $getProductStock->stock;
     }
 
+    public static function deleteCartProduct($product_id, $user_email){
+        DB::table('carts')->where(['product_id' => $product_id, 'user_email' => $user_email])->delete();
+    }
+
+    public static function getProductStatus($product_id){
+        $getProductStatus = Product::select('status')->where('id', $product_id)->first();
+        return $getProductStatus->status;
+    }
+
 }

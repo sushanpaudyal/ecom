@@ -692,10 +692,19 @@ class ProductsController extends Controller
             foreach ($userCart as $cart){
                 $product_stock = Product::getProductStock($cart->product_id, $cart->size);
                 if($product_stock == 0){
-                    return redirect('/cart')->with('flash_message_error', 'Product is sold out ! Please Shop another item');
+
+                    Product::deleteCartProduct($cart->product_id, $user_email);
+
+                    return redirect('/cart')->with('flash_message_error', 'Product is sold out ! Removed from cart.');
                 }
                 if($cart->quantity > $product_stock){
                     return redirect('/cart')->with('flash_message_error', 'Reduce Product Stock and Try Again.');
+                }
+
+                $product_status = Product::getProductStatus($cart->product_id);
+                if($product_status == 0){
+                    Product::deleteCartProduct($cart->product_id, $user_email);
+                    return redirect('/cart')->with('flash_message_error', 'Disabled Product ! Removed from cart.');
                 }
             }
 
