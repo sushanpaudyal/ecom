@@ -94,29 +94,31 @@ class AdminController extends Controller
                     $admin->username = $data['username'];
                     $admin->password = md5($data['password']);
 
-                    if(empty($data['status'])){
+                    if(!empty($data['status'])){
+                        $admin->status = 1;
+                    } else {
                         $admin->status = 0;
                     }
 
-                    if(empty($data['categories_access'])){
+                if(!empty($data['categories_access'])){
                         $admin->categories_access = 1;
                     } else {
                         $admin->categories_access = 0;
                     }
 
-                    if(empty($data['product_access'])){
+                    if(!empty($data['product_access'])){
                         $admin->product_access = 1;
                     } else {
                         $admin->product_access = 0;
                     }
 
-                    if(empty($data['orders_access'])){
+                    if(!empty($data['orders_access'])){
                         $admin->orders_access = 1;
                     } else {
                         $admin->orders_access = 0;
                     }
 
-                    if(empty($data['users_access'])){
+                    if(!empty($data['users_access'])){
                         $admin->users_access = 1;
                     } else {
                         $admin->users_access = 0;
@@ -129,5 +131,49 @@ class AdminController extends Controller
             }
         }
         return view ('admin.admins.add_admin');
+    }
+
+    public function editAdmin(Request $request, $id){
+        $adminDetails = Admin::where('id', $id)->first();
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $adminDetails->type = $data['type'];
+            $adminDetails->username = $data['username'];
+
+            if(!empty($data['status'])){
+                $adminDetails->status = 1;
+            } else {
+                $adminDetails->status = 0;
+            }
+
+            if(!empty($data['categories_access'])){
+                $adminDetails->categories_access = 1;
+            } else {
+                $adminDetails->categories_access = 0;
+            }
+
+            if(!empty($data['product_access'])){
+                $adminDetails->product_access = 1;
+            } else {
+                $adminDetails->product_access = 0;
+            }
+
+            if(!empty($data['orders_access'])){
+                $adminDetails->orders_access = 1;
+            } else {
+                $adminDetails->orders_access = 0;
+            }
+
+            if(!empty($data['users_access'])){
+                $adminDetails->users_access = 1;
+            } else {
+                $adminDetails->users_access = 0;
+            }
+
+            $adminDetails->save();
+            return redirect()->back()->with('flash_message_success', 'Sub Admin Created');
+
+        }
+        return view ('admin.admins.edit_admin', compact('adminDetails'));
     }
 }

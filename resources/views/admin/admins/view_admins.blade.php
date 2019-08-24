@@ -56,7 +56,7 @@
                                         <td>{{$admin->created_at}}</td>
                                         <td>{{$admin->updated_at}}</td>
                                         <td>
-                                            <a href="" class="btn btn-primary btn-mini">Edit</a>
+                                            <a href="{{route('editAdmin', $admin->id)}}" class="btn btn-primary btn-mini">Edit</a>
                                         </td>
                                     </tr>
                                     @endforeach
