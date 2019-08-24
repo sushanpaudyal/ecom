@@ -146,6 +146,7 @@ Route::group(['middleware' => ['adminlogin']], function (){
 
     // Admin / Sub Admin Routes
     Route::match(['get', 'post'], '/admin/view-admins', 'AdminController@viewAdmins')->name('viewAdmins');
+    Route::match(['get', 'post'], '/admin/add-admin', 'AdminController@addAdmin')->name('addAdmin');
 
 });
 

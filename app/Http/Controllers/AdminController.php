@@ -70,4 +70,22 @@ class AdminController extends Controller
         $admins = Admin::get();
         return view ('admin.admins.view_admins', compact('admins'));
     }
+
+    public function addAdmin(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $adminCount = Admin::where('username', $data['username'])->count();
+            if($adminCount > 0){
+                return redirect()->back()->with('flash_message_error', 'Username already exits');
+            } else {
+                $admin = new Admin;
+                $admin->username = $data['username'];
+                $admin->password = md5($data['password']);
+                $admin->status = $data['status'];
+                $admin->save();
+                return redirect()->back()->with('flash_message_success', 'Admin Created');
+            }
+        }
+        return view ('admin.admins.add_admin');
+    }
 }
