@@ -202,6 +202,9 @@ $("#passwordForm").validate({
 });
 
 
+
+
+
 // checking user password
 $("#current_pwd").keyup(function(){
     var current_pwd = $(this).val();
@@ -268,6 +271,9 @@ function selectPaymentMethod(){
 }
 
 
+
+
+
 function checkPinCode() {
     var pincode = $("#chkPincode").val();
     if(pincode == ""){
@@ -290,5 +296,7 @@ function checkPinCode() {
         }
     });
 }
+
+;
 
 
