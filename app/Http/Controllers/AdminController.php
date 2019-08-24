@@ -78,12 +78,54 @@ class AdminController extends Controller
             if($adminCount > 0){
                 return redirect()->back()->with('flash_message_error', 'Username already exits');
             } else {
-                $admin = new Admin;
-                $admin->username = $data['username'];
-                $admin->password = md5($data['password']);
-                $admin->status = $data['status'];
-                $admin->save();
-                return redirect()->back()->with('flash_message_success', 'Admin Created');
+                if($data['type'] == "Admin"){
+                    $admin = new Admin;
+                    $admin->type = $data['type'];
+                    $admin->username = $data['username'];
+                    $admin->password = md5($data['password']);
+                    if(empty($data['status'])){
+                        $admin->status = 0;
+                    }
+                    $admin->save();
+                    return redirect()->back()->with('flash_message_success', 'Admin Created');
+                } else if ($data['type'] == "SubAdmin"){
+                    $admin = new Admin;
+                    $admin->type = $data['type'];
+                    $admin->username = $data['username'];
+                    $admin->password = md5($data['password']);
+
+                    if(empty($data['status'])){
+                        $admin->status = 0;
+                    }
+
+                    if(empty($data['categories_access'])){
+                        $admin->categories_access = 1;
+                    } else {
+                        $admin->categories_access = 0;
+                    }
+
+                    if(empty($data['product_access'])){
+                        $admin->product_access = 1;
+                    } else {
+                        $admin->product_access = 0;
+                    }
+
+                    if(empty($data['orders_access'])){
+                        $admin->orders_access = 1;
+                    } else {
+                        $admin->orders_access = 0;
+                    }
+
+                    if(empty($data['users_access'])){
+                        $admin->users_access = 1;
+                    } else {
+                        $admin->users_access = 0;
+                    }
+
+                    $admin->save();
+                    return redirect()->back()->with('flash_message_success', 'Sub Admin Created');
+                }
+
             }
         }
         return view ('admin.admins.add_admin');

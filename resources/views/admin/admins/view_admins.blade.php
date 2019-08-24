@@ -33,6 +33,7 @@
                                 <tr>
                                     <th>User ID</th>
                                     <th>Username</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Registered</th>
                                     <th>Updated On</th>
@@ -44,6 +45,7 @@
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
                                         <td>{{$admin->username}}</td>
+                                        <td>{{$admin->type}}</td>
                                         <td>
                                             @if($admin->status == 1)
                                                 <span style="color: green;">Active</span>

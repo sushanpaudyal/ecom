@@ -3,10 +3,10 @@ $(document).ready(function(){
 
     $("#type").change(function () {
         var type = $("#type").val();
-        if(type = "Admin"){
-            $('#access').hide();
-        } else {
+        if(type = "SubAdmin"){
             $('#access').show();
+        } else {
+            $('#access').hide();
         }
     });
 
