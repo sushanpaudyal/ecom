@@ -144,6 +144,9 @@ Route::group(['middleware' => ['adminlogin']], function (){
     Route::get('/admin/view-shipping', 'ShippingController@viewShipping')->name('viewShipping');
     Route::match(['get', 'post'], '/admin/edit-shipping/{id}', 'ShippingController@editShipping')->name('editShipping');
 
+    // Admin / Sub Admin Routes
+    Route::match(['get', 'post'], '/admin/view-admins', 'AdminController@viewAdmins')->name('viewAdmins');
+
 });
 
 Auth::routes();

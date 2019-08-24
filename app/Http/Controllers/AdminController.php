@@ -65,4 +65,9 @@ class AdminController extends Controller
         Session::flush();
         return redirect('/admin')->with('flash_message_success', 'Logout Successfull');
     }
+
+    public function viewAdmins(){
+        $admins = Admin::get();
+        return view ('admin.admins.view_admins', compact('admins'));
+    }
 }

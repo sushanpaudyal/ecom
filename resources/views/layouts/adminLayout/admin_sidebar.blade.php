@@ -53,6 +53,13 @@
             </ul>
         </li>
 
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Admins / Sub Admins</span> </a>
+            <ul <?php if(preg_match("/admins/i", $url)) { echo 'style="display:block;"';} ?>>
+                <li <?php if(preg_match("/add-admin/i", $url)) { echo 'class="active"';} ?>><a href="{{route('add-currency')}}">Add Admins</a></li>
+                <li <?php if(preg_match("/view-admins/i", $url)) { echo 'class="active"';} ?>><a href="{{route('viewAdmins')}}">View Admins</a></li>
+            </ul>
+        </li>
+
         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>CMS Pages</span> </a>
             <ul <?php if(preg_match("/cms-page/i", $url)) { echo 'style="display:block;"';} ?>>
                 <li <?php if(preg_match("/add-cms-page/i", $url)) { echo 'class="active"';} ?>><a href="{{route('add-cms-page')}}">Add CMS Pages</a></li>
