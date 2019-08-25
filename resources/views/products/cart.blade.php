@@ -48,6 +48,7 @@
                                 <p>{{$cart->product_code}} | {{$cart->size}}</p>
                             </td>
                             <td class="cart_price">
+                                <?php $product_price = Product::getProductPrice($cart->product_id, $cart->size); ?>
                                 <p>Rs. {{$cart->price}}</p>
                             </td>
                             <td class="cart_quantity">

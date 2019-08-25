@@ -746,7 +746,6 @@ class ProductsController extends Controller
             }
 
 
-
             //Getting the shipping details of the user
             $shippingDetails = DeliveryAddress::where(['user_email' => $user_email])->first();
 
@@ -774,8 +773,13 @@ class ProductsController extends Controller
                 $data['shipping_charges'] = 0;
             }
 
-            $shippingCharges = Product::getShippingCharges($shippingDetails->country);
+//            $shippingCharges = Product::getShippingCharges($shippingDetails->country);
 
+
+            $data['grand_total'] = 0;
+
+            $grand_total = Product::getGrandTotal();
+            Session::put('grand_total', $grand_total);
 
             $order = new Order;
             $order->user_id = $user_id;
@@ -792,8 +796,8 @@ class ProductsController extends Controller
             $order->coupon_amount = $coupon_amount;
             $order->order_status = "New";
             $order->payment_method = $data['payment_method'];
-            $order->shipping_charges = $shippingCharges;
-            $order->grand_total = $data['grand_total'];
+            $order->shipping_charges = 0;
+            $order->grand_total = $grand_total;
             $order->save();
 
 
@@ -823,7 +827,7 @@ class ProductsController extends Controller
             }
 
             Session::put('order_id', $order_id);
-            Session::put('grand_total', $data['grand_total']);
+            Session::put('grand_total', $grand_total);
 
 
             // Sending Order Email
