@@ -132,8 +132,9 @@
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="single-widget">
                         <h2>About Shopper</h2>
-                        <form action="#" class="searchform">
-                            <input type="text" placeholder="Your email address" />
+                        <form action="javascript:" type="post" class="searchform">
+                            @csrf
+                            <input name="subscriber_email" id="subscriber_email" type="email" placeholder="Your email address" required/>
                             <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
                             <p>Get the most recent updates from <br />our site and be updated your self...</p>
                         </form>
@@ -148,7 +149,7 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                <p class="pull-right">Developed by <span><a target="_blank" href="http://paudyalsushan.com">Sushan Paudyal</a></span></p>
             </div>
         </div>
     </div>
