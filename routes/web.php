@@ -50,6 +50,10 @@ Route::post('/search-products', 'ProductsController@searchProducts')->name('sear
 Route::match(['get', 'post'], '/forget-password' ,'UsersController@forgetPassword')->name('forgetPassword');
 
 
+// Check ssubscriber email
+Route::post('/check-subscriber-email', 'NewsletterController@checkSubscriber');
+
+
 
 Route::group(['middleware' => ['frontlogin']], function(){
     Route::match(['get', 'post'], '/account', 'UsersController@account');

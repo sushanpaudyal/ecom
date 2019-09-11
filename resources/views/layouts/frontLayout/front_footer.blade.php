@@ -134,7 +134,7 @@
                         <h2>About Shopper</h2>
                         <form action="javascript:" type="post" class="searchform">
                             @csrf
-                            <input name="subscriber_email" id="subscriber_email" type="email" placeholder="Your email address" required/>
+                            <input onfocusout="checkSubscriber()"  name="subscriber_email" id="subscriber_email" type="email" placeholder="Your email address" required/>
                             <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
                             <p>Get the most recent updates from <br />our site and be updated your self...</p>
                         </form>
@@ -155,3 +155,21 @@
     </div>
 
 </footer><!--/Footer-->
+
+
+<script>
+    function checkSubscriber(){
+        var subscriber_email = $("#subscriber_email").val();
+        $.ajax({
+            type: 'post',
+            url: '/check-subscriber-email',
+            data: {subscriber_email:subscriber_email},
+            success: function(resp){
+                alert(resp);
+            }, error: function(){
+                alert("Error");
+            }
+
+        })
+    }
+</script>
