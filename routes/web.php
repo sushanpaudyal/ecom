@@ -53,6 +53,9 @@ Route::match(['get', 'post'], '/forget-password' ,'UsersController@forgetPasswor
 // Check ssubscriber email
 Route::post('/check-subscriber-email', 'NewsletterController@checkSubscriber');
 
+Route::post('/add-subscriber-email', 'NewsletterController@addSubscriber');
+
+
 
 
 Route::group(['middleware' => ['frontlogin']], function(){
