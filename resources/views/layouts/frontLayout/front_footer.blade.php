@@ -134,8 +134,9 @@
                         <h2>About Shopper</h2>
                         <form action="javascript:" type="post" class="searchform">
                             @csrf
-                            <input onfocusout="checkSubscriber()"  name="subscriber_email" id="subscriber_email" type="email" placeholder="Your email address" required/>
-                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                            <input onfocus="enableSubscriber()" onfocusout="checkSubscriber()"  name="subscriber_email" id="subscriber_email" type="email" placeholder="Your email address" required/>
+                            <button id="btnSubmit" type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                            <div onclick="checkSubscriber()" id="statusSuscribe" style="display: none; padding-top: 10px;"></div>
                             <p>Get the most recent updates from <br />our site and be updated your self...</p>
                         </form>
                     </div>
@@ -165,11 +166,23 @@
             url: '/check-subscriber-email',
             data: {subscriber_email:subscriber_email},
             success: function(resp){
-                alert(resp);
+                if(resp == "exists"){
+                    $("#statusSuscribe").show();
+                    $("#btnSubmit").hide();
+                    $("#statusSuscribe").html("<span> <br> <font color='red'> Subscribe Email already exists </font> </span>");
+                }
             }, error: function(){
                 alert("Error");
             }
 
         })
     }
+
+    function enableSubscriber() {
+        $("#btnSubmit").show();
+        $("#statusSuscribe").hide();
+
+    }
+
+
 </script>
