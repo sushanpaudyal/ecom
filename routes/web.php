@@ -156,6 +156,9 @@ Route::group(['middleware' => ['adminlogin']], function (){
     Route::match(['get', 'post'], '/admin/add-admin', 'AdminController@addAdmin')->name('addAdmin');
     Route::match(['get', 'post'], '/admin/edit-admin/{id}', 'AdminController@editAdmin')->name('editAdmin');
 
+    // View Newsletters Subscribers
+    Route::get('/admin/view-newsletter-subscriberrs', 'NewsletterController@viewNewsletterSubscribers')->name('viewNewsletterSubscribers');
+
 
 });
 

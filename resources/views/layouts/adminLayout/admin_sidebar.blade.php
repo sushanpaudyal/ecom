@@ -81,6 +81,13 @@
         </li>
 
 
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Newsletter Subscriber</span> </a>
+            <ul <?php if(preg_match("/newsletter-subscribers/i", $url)) { echo 'style="display:block;"';} ?>>
+                <li <?php if(preg_match("/newsletter-subscribers/i", $url)) { echo 'class="active"';} ?>><a href="{{route('viewNewsletterSubscribers')}}">View</a></li>
+            </ul>
+        </li>
+
+
     </ul>
 </div>
 <!--sidebar-menu-->

@@ -35,4 +35,11 @@ class NewsletterController extends Controller
             }
         }
     }
+
+
+
+    public function viewNewsletterSubscribers(){
+        $newsletterss = Newsletter::get();
+        return view ('admin.newsletters.view_newsletters', compact('newsletterss'));
+    }
 }
