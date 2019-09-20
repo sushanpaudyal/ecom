@@ -19,6 +19,11 @@
                 </div>
             @endif
         </div>
+
+
+        <div style="margin-left:20px; ">
+            <a href="{{ url('/admin/export-newsletter-emails') }}" class="btn btn-primary btn-mini">Export</a>
+        </div>
         <div class="container-fluid">
             <hr>
             <div class="row-fluid">

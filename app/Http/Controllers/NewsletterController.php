@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Newsletter;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NewsletterController extends Controller
 {
@@ -53,5 +54,16 @@ class NewsletterController extends Controller
         $newsletter->delete();
         return redirect()->back()->with('flash_message_success', 'Newsletter has been Deleted');
 
+    }
+
+    public function exportNewsletterEmails(){
+        $subsciberData = Newsletter::select('id','email','created_at')->where('status', 1)->orderBy('id', 'DESC')->get();
+        $subsciberData = json_decode(json_encode($subsciberData), true);
+//        echo "<pre>"; print_r($subsciberData); die;
+        return Excel::create('subscribers'.rand(), function ($excel) use ($subsciberData){
+            $excel->sheet('mySheet', function($sheet) use ($subsciberData){
+                $sheet->fromArray($subsciberData);
+            });
+        })->download('xlsx');
     }
 }
