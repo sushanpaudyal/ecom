@@ -35,6 +35,7 @@
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Created On</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,8 +43,21 @@
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
                                         <td>{{$newsletter->email}}</td>
-                                        <td>{{$newsletter->status}}</td>
+                                        <td>
+                                            @if($newsletter->status == 1)
+                                                <a href="{{url('/admin/update-newsletter-status/'.$newsletter->id.'/0')}}">
+                                                    <span style="color: green;">Active</span>
+                                                </a>
+                                                @else
+                                                <a href="{{url('/admin/update-newsletter-status/'.$newsletter->id.'/1')}}">
+                                                    <span style="color: red;">InActive</span>
+                                                </a>
+                                            @endif
+                                        </td>
                                         <td>{{$newsletter->created_at}}</td>
+                                        <td>
+                                            <a rel="{{$newsletter->id}}" rel1="delete-newsletter" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

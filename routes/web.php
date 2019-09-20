@@ -159,6 +159,9 @@ Route::group(['middleware' => ['adminlogin']], function (){
     // View Newsletters Subscribers
     Route::get('/admin/view-newsletter-subscriberrs', 'NewsletterController@viewNewsletterSubscribers')->name('viewNewsletterSubscribers');
 
+    Route::get('/admin/update-newsletter-status/{id}/{status}', 'NewsletterController@updateNewsletterStatus')->name('updateNewsletterStatus');
+
+    Route::get('/admin/delete-newsletter/{id}', 'NewsletterController@deleteNewsletter');
 
 });
 
